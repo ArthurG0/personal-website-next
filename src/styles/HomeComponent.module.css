@@ -1,0 +1,84 @@
+.HomeMainDiv {
+    width: 90vw;
+    height: 90vh;
+    text-align: center;
+    margin: 5vh 5vw;
+    border: none;
+    scroll-behavior: smooth;
+}
+
+.ProfilePic {
+    border-radius: 100%;
+    width: 35vh;
+}
+
+.HomeGreeting {
+    font-family: 'Mustica';
+    font-size: 2.5em;
+    padding-top: 3vh;
+    padding-bottom: 0vh;
+}
+
+.HomeSection {
+    font-family: 'Mustica';
+    font-size: 2.5em;
+    padding-top: 10vh;
+    padding-bottom: 3vh;
+}
+
+.HomeAbout {
+    font-family: 'Mustica';
+    padding: 1.5vh;
+    font-size: 1.3em;
+    width: 70%;
+    margin: auto;
+}
+
+.Home.Flex.Row{
+    display: flex;
+    justify-content: center;
+}
+
+.Home.Icon {
+    width: 3vw;
+    padding: 0 1vh;
+}
+
+
+.Home.Icon:hover {
+    transform: scale(1.1);
+}
+
+.Home.HeaderBar {
+    width: 100%;
+    height: 6vh;
+    background-color: #d0a978;
+    display: flex;
+    justify-content: center;
+}
+
+.Home.HeaderBar > a {
+    font-family: 'Mustica';
+    text-decoration: none;
+    color: #ffffff;
+    line-height: 6vh;
+    display: block;
+    margin: 0 1vw;
+}
+
+/* For Desktop */
+@media only screen and (min-aspect-ratio: 3/4) {
+
+}
+  
+/* For Mobile */
+@media only screen and (max-aspect-ratio: 3/4) {
+
+    .Home.Icon {
+        width: 8vw;
+    }
+
+    .HomeAbout {
+        font-size: 1.1em;
+    }
+}

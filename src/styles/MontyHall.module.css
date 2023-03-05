@@ -1,0 +1,168 @@
+.MontyHallMain {
+    text-align: center;
+    font-family: 'Poppins';
+
+}
+
+.MontyHallLabel {
+    font-size: 2em;
+    padding: 2% 0; 
+    position: relative;  
+}
+
+.MontyHallDoorsFlex {
+    display: flex;
+    width: 70%;
+    margin: auto;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    /* background-color: white; */
+}
+
+.MontyHallSpan {
+    opacity: 0;
+}
+
+.MontyHallSpan.revealed {
+    opacity: 1;
+}
+
+.ChatBoxText {
+    word-spacing: 0.2em;
+    margin: 0 auto;
+    background: #fff;
+    padding: 1em;
+    border-bottom: 1vw solid #d0a978;
+    position:relative;
+    margin-bottom: 5%;
+    text-align: left;
+    min-height: 5.5em;
+    width: 70%;
+ }
+ .corner {
+    position:absolute;
+    width: 10vw;
+    right:2vw;
+    bottom:0;
+    transform: translateY(80%); 
+ }
+
+.DoorWrapper {
+    width: 30%;
+    position: relative;
+}
+
+.DoorWrapper > img {
+    max-width: 100%;
+}
+
+.DoorLabel {
+    margin: auto;
+    position: absolute;
+    left: 0; bottom: -35px; right: 0;
+    font-family: 'Poppins';
+    font-size: 1.2em;
+}
+
+.MontyHallPlayAgainButton {
+    display: block;
+    margin: 10px auto;
+    background-color: #d0a978;
+    border: 0;
+    padding: 10px;
+    border-radius: 25px;
+    height: 50px;
+    width: 150px;
+    font-weight: 700;
+    font-family: 'Poppins';
+    font-size: 1em;
+    color: white;
+    opacity: 0;
+}
+
+.MontyHallPlayAgainButton.hollow {
+    background-color: #ffffff;
+    color: #d0a978;
+    border: 3px solid #d0a978;
+}
+
+.MontyHallPlayAgainButton.revealed {
+    opacity: 1;
+}
+
+.MontyHallStatsTable,  .MontyHallStatsTable > tbody, .MontyHallStatsTable tr, .MontyHallStatsTable td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.MontyHallStatsTable {
+    margin: auto;
+}
+
+.MontyHallStatsTableWrapper {
+    margin: auto;
+    opacity: 0;
+}
+
+.MontyHallStatsTableWrapper.revealed {
+    margin: auto;
+    opacity: 1;
+}
+
+.MontyHallStatsTable td {
+    padding: 10px;
+}
+
+.MontyHallInfoIcon {
+    fill: #505050;
+    position: relative;
+    left: 0;
+    bottom: 10px;
+}
+
+.MontyHallInfoIcon:hover {
+    fill: #000000
+}
+
+.MontyHallOverlay{
+    width: 100vw;
+    height: 100vh;
+    z-index: 5;
+    display: flex;
+    position: absolute;
+}
+
+.MontyHallInfoSection{
+    width: 80vw;
+    height: 80vh;
+    background-color: #ffffff; 
+    z-index: 6;  
+    margin: auto;
+    overflow-y: scroll;
+}
+
+.MontyHallInfoHeader {
+    margin: 4.5vh 0;
+    font-size: 1.2em;
+}
+
+.MontyHallInfoBackground {
+    margin: 2.5vh 0;
+    font-size: 0.8em;
+}
+
+.MontyHallInfoBackground.code {
+    width: 85%;
+    margin: auto;
+    font-family: monospace;
+    font-size: 1.4em;
+    background-color: rgb(247, 247, 247);
+    text-align: left;
+}
+
+.MontyHallButtonRow {
+    display: flex;
+    width: 30%;
+    margin: auto;
+}

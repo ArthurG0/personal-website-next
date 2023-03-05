@@ -1,0 +1,44 @@
+.ReactionWrapper {
+    text-align: center;
+    font-family: 'Mustica';
+}
+
+.BodyHeader {
+    font-size: 2em;
+    margin: 5vh 0;
+}
+
+.BodyButton {
+    padding: 1.5vh 2vw;
+    border: 2px solid black;
+    display: inline-block;
+    border-radius: 12px;
+}
+
+.ReactionResult {
+    font-family: monospace;
+    font-size: 4em;
+}
+
+.ReactionField {
+    height: 40vh;
+    width: 98vw;
+    margin: 5vh auto 0 auto;
+    border: 3px dashed black;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.green {
+    background-color: #00ff7f;
+}
+
+.yellow {
+    background-color: gold;
+}
+
+.done {
+    background-color: cornflowerblue;
+}

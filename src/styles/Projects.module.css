@@ -1,0 +1,57 @@
+.PersonalProjects {
+    padding: 10vh 0 0 0;
+    font-family: 'Mustica';
+}
+
+.IndividualProject {
+    display: flex;
+    width: 60%;
+    margin: auto;
+    margin-bottom: 10vh;
+}
+
+.IPPhoto {
+    width: 100%;
+}
+
+.IPPhotoWrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.IPName {
+    font-size: 2em;
+    margin-bottom: 5vh;
+}
+
+.IPDesc {
+    margin-bottom: 5vh;
+}
+
+.IPLink {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
+
+/* For Desktop */
+@media only screen and (min-aspect-ratio: 3/4) {
+    .IndividualProject {
+        width: 60%;
+        justify-content: space-around;
+    }
+    .IPLeftSide {
+        width: 45%;
+    }
+    
+    .IPRightSide {
+        width: 45%;
+    }    
+}
+  
+/* For Mobile */
+@media only screen and (max-aspect-ratio: 3/4) {
+    .IndividualProject {
+        width: 100%;
+    }
+}
