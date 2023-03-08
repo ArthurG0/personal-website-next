@@ -44,7 +44,11 @@ function MontyHall(props) {
     {
         [Door1Ref, Door2Ref, Door3Ref].map((x, index) => {
             return (
-            <div className={styles.DoorWrapper}>
+            <div 
+                className={styles.DoorWrapper}
+                key={'door-' + index}
+            >
+                
                 <img 
                     src={closedDoor}
                     ref={x}
@@ -107,7 +111,7 @@ function MontyHall(props) {
     let chatBox = 
         <div className={styles.ChatBoxText} ref={TextRef}>
             <svg className={styles.corner} viewBox="0 0 65 62" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M25 3.5L45 6.5V42L0 0L25 3.5Z or" fill="white"/>
+                <path d="M25 3.5L45 6.5V42L0 0L25 3.5Z" fill="white"/>
             </svg>
         </div>
 
@@ -165,7 +169,7 @@ function MontyHall(props) {
                     </div>
                 </div>
             : ""}
-            <div className="MontyHallLabel">
+            <div className={styles.MontyHallLabel}>
                 <span style={{fontVariantCaps: 'petite-caps'}}>The Monty Hall Paradox</span>
                 <svg 
                     xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
