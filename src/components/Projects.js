@@ -25,7 +25,7 @@ function Projects() {
         },
         {
             name: 'Reaction Time Test',
-            desc: 'Not all men are created equal. The difference in reaction times really shows for top athletes and in e-sports. ' + 
+            desc: 'Not all reflexes are created equal. The difference in reaction times really shows for top athletes and in e-sports. ' + 
             'I created this basic reaction testing tool to see if the differences in performance between me and my friends are just based on skill, ' +
             'or if their brain is giving them an unfair advantage.',
             technologies: ['Javascript', 'React'],
