@@ -4,6 +4,8 @@ import pic1 from '../assets/personal-pic/linkedin-pic.jpeg'
 import linkedLogo from '../assets/icons/linkedin-logo.svg'
 import ghLogo from '../assets/icons/github-logo.svg'
 import Projects from './Projects.js'
+import Link from 'next/link'
+
 
 function HomeComponent(props: any) {
 
@@ -22,6 +24,8 @@ function HomeComponent(props: any) {
             <a href="#contact">Contact</a>
             <a href="#portfolio">Portfolio</a>
             <a href="#resume">Resume</a>
+            <Link href="/startdate">Start Date</Link>
+            
 
         </div>
 

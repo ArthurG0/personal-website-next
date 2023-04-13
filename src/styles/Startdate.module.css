@@ -5,3 +5,10 @@
 .largerText {
     font-size: 7rem;
 }
+
+.homeIcon {
+    color: black;
+    position: absolute;
+    top: 5vh;
+    left: 5vw;
+}
