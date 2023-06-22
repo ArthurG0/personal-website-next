@@ -43,7 +43,7 @@ function HomeComponent(props: any) {
                 </a>
                     
             </div>
-            <div className={styles.HomeAbout}>I am a 22-year old Russian-American Software Developer.</div>
+            <div className={styles.HomeAbout}>I am a 23-year old Russian-American Software Developer.</div>
             <div className={styles.HomeAbout}>I have graduated from University of California, Santa Barbara as a Bachelor of Computer Science. I am currently enrolled in a 5-year Master's Program at UCSB.</div>
             {/* <div className="HomeAbout">I am looking for work.</div> */}
             <div className={styles.HomeSection}>Contact me!
