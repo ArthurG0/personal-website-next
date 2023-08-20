@@ -64,7 +64,7 @@ function Projects() {
 
                 if(index % 2) {
                     return (
-                        <div className={styles.IndividualProject}>
+                        <div className={styles.IndividualProject} key={"index" + index.toString()}>
                             <div className={styles.IPRightSide}> 
                             {
                                 projPhoto
@@ -79,7 +79,7 @@ function Projects() {
                     )
                 }
                 return (
-                <div className={styles.IndividualProject}>
+                <div className={styles.IndividualProject} key={"index" + index.toString()}>
                     <div className={styles.IPLeftSide}> 
                         {projName}
                         {projDesc}

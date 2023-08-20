@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState , useEffect, ReactPropTypes } from 'react'
 import styles from '../styles/HomeComponent.module.css'
 import pic1 from '../assets/personal-pic/linkedin-pic.jpeg'
@@ -5,6 +6,7 @@ import linkedLogo from '../assets/icons/linkedin-logo.svg'
 import ghLogo from '../assets/icons/github-logo.svg'
 import Projects from './Projects.js'
 import Link from 'next/link'
+
 
 
 function HomeComponent(props: any) {
@@ -19,16 +21,6 @@ function HomeComponent(props: any) {
     // let projectsHTML = <div className="PersonalProjects"></div>
 
     return (
-        <div>
-        <div className={styles.Home + ' ' + styles.HeaderBar}>
-            <a href="#contact">Contact</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#resume">Resume</a>
-            <Link href="/startdate">Start Date</Link>
-            
-
-        </div>
-
         <div className={styles.HomeMainDiv}>
             <div className={styles.HomeGreeting}>Hello | Здравствуйте</div>
             <div className={styles.HomeAbout}>My name is Arthur Gatin</div>
@@ -65,7 +57,7 @@ function HomeComponent(props: any) {
 
 
         </div>
-        </div>
+
 
     )
 }
