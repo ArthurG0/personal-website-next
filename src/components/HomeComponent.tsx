@@ -20,6 +20,8 @@ function HomeComponent(props: any) {
     // ]
     // let projectsHTML = <div className="PersonalProjects"></div>
 
+
+
     return (
         <div className={styles.HomeMainDiv}>
             <div className={styles.HomeGreeting}>Hello | Здравствуйте</div>
@@ -51,7 +53,7 @@ function HomeComponent(props: any) {
                 <a id="resume"></a>
             </div>
             <div className={styles.HomeAbout}>Here is my resume:</div>
-            <iframe src="https://sites.cs.ucsb.edu/~agatin/files/Resume_AXS_F23.pdf#" width="100%" height="100%">
+            <iframe src="https://sites.cs.ucsb.edu/~agatin/files/Resume_AXS_F23.pdf#" width="100%" height="1100px">
             </iframe>
 
 

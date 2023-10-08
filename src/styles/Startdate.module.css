@@ -9,6 +9,71 @@
 .homeIcon {
     color: black;
     position: absolute;
-    top: 5vh;
-    left: 5vw;
+}
+
+.AgeMainText {
+    font-size: 2rem;
+    font-variant-caps: all-petite-caps;
+}
+
+.AgeFullYears {
+    position: relative;
+    font-size: 7rem;
+}
+
+.AgeDecimalText {
+    position: absolute;
+    font-size: 3rem;
+    top: 1.5rem;
+}
+
+/* For Desktop */
+@media only screen and (min-aspect-ratio: 3/4) {
+    .AgeMainText {
+        font-size: 2rem;
+        font-variant-caps: all-petite-caps;
+        padding-bottom: 10vh;
+    }
+    
+    .AgeFullYears {
+        position: relative;
+        font-size: 7rem;
+    }
+    
+    .AgeDecimalText {
+        position: absolute;
+        font-size: 3rem;
+        top: 1.5rem;
+    }
+
+    .homeIcon {
+        top: 5vh;
+        left: 5vw;
+    }
+}
+  
+/* For Mobile */
+@media only screen and (max-aspect-ratio: 3/4) {
+    .AgeMainText {
+        font-size: 2rem;
+        font-variant-caps: all-petite-caps;
+        padding-bottom: 10vh;
+        padding-top: 5vh;
+    }
+    
+    .AgeFullYears {
+        position: relative;
+        font-size: 4rem;
+    }
+    
+    .AgeDecimalText {
+        position: absolute;
+        font-size: 2rem;
+        top: 0.75rem;
+    }
+
+    .homeIcon {
+        top: 5vh;
+        left: 5vw;
+    }
 }

@@ -12,6 +12,7 @@ return (
         <a href="#resume">Resume</a>
         <Link href="/startdate">Start Date</Link>
         <Link href="/russian-typer">Russian Typer</Link>
+        <Link href="/age">Age</Link>
     </div>
 
     )
