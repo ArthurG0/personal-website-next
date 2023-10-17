@@ -19,11 +19,13 @@
 .AgeFullYears {
     position: relative;
     font-size: 7rem;
+    font-weight: normal;
 }
 
 .AgeDecimalText {
     position: absolute;
     font-size: 3rem;
+    font-weight: normal;
     top: 1.5rem;
 }
 
@@ -63,12 +65,12 @@
     
     .AgeFullYears {
         position: relative;
-        font-size: 4rem;
+        font-size: 3.5rem;
     }
     
     .AgeDecimalText {
         position: absolute;
-        font-size: 2rem;
+        font-size: 1.5rem;
         top: 0.75rem;
     }
 

@@ -51,25 +51,12 @@
     transform: scale(1.1);
 }
 
-.Home.HeaderBar {
-    width: 100%;
-    height: 6vh;
-    background-color: #d0a978;
-    display: flex;
-    justify-content: center;
-}
 
-.Home.HeaderBar > a {
-    font-family: 'Mustica';
-    text-decoration: none;
-    color: #ffffff;
-    line-height: 6vh;
-    display: block;
-    margin: 0 1vw;
-}
 
 /* For Desktop */
 @media only screen and (min-aspect-ratio: 3/4) {
+
+
 
 }
   
