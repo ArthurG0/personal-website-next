@@ -21,6 +21,12 @@ function HomeComponent(props: any) {
     // let projectsHTML = <div className="PersonalProjects"></div>
 
 
+    const styleObject = <style>{`
+        .el-strikethrough {
+            text-decoration: line-through;
+        }
+    `}
+    </style>
 
     return (
         <div className={styles.HomeMainDiv}>
@@ -38,8 +44,11 @@ function HomeComponent(props: any) {
                     
             </div>
             <div className={styles.HomeAbout}>I am a 23-year old Russian-American Software Developer.</div>
-            <div className={styles.HomeAbout}>I have graduated from University of California, Santa Barbara as a Bachelor of Computer Science. I am currently enrolled in a 5-year Master's Program at UCSB.</div>
+            <div className={styles.HomeAbout}>I have graduated from University of California, Santa Barbara as a Bachelor of Computer Science
+            . <span className='el-strikethrough'>I am currently enrolled in a 5-year Master's Program at UCSB.</span></div>
             {/* <div className="HomeAbout">I am looking for work.</div> */}
+            <div className={styles.HomeAbout}>I quit my Master's program to dive deep into industry. I am now a Software Engineer at Amazon.</div>
+
             <div className={styles.HomeSection}>Contact me!
                 <a id="contact"></a>
             </div>
@@ -55,6 +64,7 @@ function HomeComponent(props: any) {
             <div className={styles.HomeAbout}>Here is my resume:</div>
             <iframe src="https://sites.cs.ucsb.edu/~agatin/files/Resume_AXS_F23.pdf#" width="100%" height="1100px">
             </iframe>
+            {styleObject}
 
 
 
