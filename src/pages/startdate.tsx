@@ -146,13 +146,14 @@ export default function StartDate() {
                 </Head>
                 <div style={{textAlign: 'center', paddingTop: '10vh'}}>
                     <h3 className={styles.smallerText}>Looks like you were already able to start at Amazon!</h3>
+                    {amazonSmileElement}
+
 
                     <h1 className={styles.largerText}>{daysLeft}</h1>
                     <h3 className={styles.smallerText}>days have passed since your start date, <span style={{fontSize: '200%', margin: '0px 5px'}}>{readable_start_date}</span></h3>
                     <h3 className={styles.smallerText}>which means you must now be in your <span style={{fontSize: '200%', margin: '0px 5px'}}>{weeksWorked}</span>{numWeeksNumeralEnding} week!</h3>
 
                     {returnHomeElement}
-                    {amazonSmileElement}
     
                 </div>
             </>

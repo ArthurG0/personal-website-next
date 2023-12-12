@@ -31,6 +31,7 @@
 
 .AmazonLogo {
     max-width: 90vw;
+    margin-bottom: 5vh;
 }
 
 /* For Desktop */
@@ -81,5 +82,13 @@
     .homeIcon {
         top: 5vh;
         left: 5vw;
+    }
+
+    .largerText {
+        line-height: 5rem;
+    }
+
+    .smallerText {
+        line-height: 2.2rem;
     }
 }
