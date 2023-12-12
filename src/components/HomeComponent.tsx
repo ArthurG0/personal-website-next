@@ -49,15 +49,20 @@ function HomeComponent(props: any) {
             {/* <div className="HomeAbout">I am looking for work.</div> */}
             <div className={styles.HomeAbout}>I quit my Master's degree to dive deep into industry. I am now a Software Engineer at Amazon.</div>
 
+            <hr/>
+
             <div className={styles.HomeSection}>Contact me!
                 <a id="contact"></a>
             </div>
             <div className={styles.HomeAbout}>The best way to reach me is through email: agatin [at] ucsb.edu</div>
+            <hr/>
+
             <div className={styles.HomeSection}>Portfolio
                 <a id="portfolio"></a>
             </div>
             <div className={styles.HomeAbout}>Here is a small selection of my most recent projects:</div>
             {<Projects/>}
+            <hr/>
             <div className={styles.HomeSection}>Resume
                 <a id="resume"></a>
             </div>

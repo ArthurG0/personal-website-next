@@ -76,15 +76,18 @@ function Header(props: any) {
         #header-container-mobile-links {
             display: flex;
             flex-direction: column;
+            flex-wrap: wrap;
             min-height: 6vh;
             transition: line-height 0.5s;
+            max-height: 17vh;
+            width: 80%;
+            padding-left: 6vw;
             
         }
 
         .linkElement {
             transition-delay: 0.1s;
-            transition-property: visibility;
-            margin-left: 6vw;            
+            transition-property: visibility;           
         }
 
         #header-container-mobile-links:not(.open) {

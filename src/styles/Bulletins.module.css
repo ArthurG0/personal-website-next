@@ -1,0 +1,31 @@
+.homeIcon {
+    color: black;
+    position: absolute;
+    top: 5vh;
+    left: 5vw;
+}
+
+
+.bulletin_key_input_form {
+    width: 60vw;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.bulletin_key_input_form , .bulletin_key_input_form * {
+    border: 1px solid red;
+}
+
+.bltn_key_input_row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+
+input.bltn_key_input_cell {
+
+}
+
+

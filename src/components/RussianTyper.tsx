@@ -91,8 +91,8 @@ function RussianTyper(props: none) {
 
     return (
         <div style={{textAlign: 'center', paddingTop: '10vh'}}>
-            <h3 style={{maxWidth: '40%', margin: 'auto'}} id='instr-1'>Need to type something in Russian but no Russian keyboard handy? Know where all the Russian keys are but have to stick to an English keyboard? Then this page is for you!</h3>
-            <p style={{maxWidth: '40%', margin: 'auto', padding: '2vh 0'}} id='instr-2'>Type something using English letters, and it will as if you're typing on a Russian keyboard!</p>
+            <h3 style={{maxWidth: '60%', margin: 'auto'}} id='instr-1'>Need to type something in Russian but no Russian keyboard handy? Know where all the Russian keys are but have to stick to an English keyboard (on desktop)? Then this page is for you!</h3>
+            <p style={{maxWidth: '60%', margin: 'auto', padding: '2vh 0'}} id='instr-2'>Type something using English letters, and it will as if you're typing on a Russian keyboard!</p>
             <form>
 
             <textarea className={styles.inputBox} id="inputBox" rows="5" cols="50" type='text' autoFocus value={typedText} onChange={handleChange} placeholder="Enter text here:"></textarea>

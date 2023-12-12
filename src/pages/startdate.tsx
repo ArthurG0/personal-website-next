@@ -68,7 +68,7 @@ export default function StartDate() {
         </Link>
     
     const amazonSmileElement = 
-    <img src='./icons/Amazoncom-yellow-arrow.png'></img>
+    <img className={styles.AmazonLogo}   src='./icons/Amazoncom-yellow-arrow.png'></img>
 
     if (daysLeft) {
         let startDate = new Date(myStartDate)

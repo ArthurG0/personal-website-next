@@ -24,13 +24,13 @@
 .HomeSection {
     font-family: 'Mustica';
     font-size: 2.5em;
-    padding-top: 10vh;
+    padding-top: 5vh;
     padding-bottom: 3vh;
 }
 
 .HomeAbout {
     font-family: 'Mustica';
-    padding: 1.5vh;
+    padding: 1.5vh 1.5vh 6.5vh 1.5vh;
     font-size: 1.3em;
     width: 70%;
     margin: auto;

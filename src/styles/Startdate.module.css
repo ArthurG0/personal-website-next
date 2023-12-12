@@ -29,6 +29,10 @@
     top: 1.5rem;
 }
 
+.AmazonLogo {
+    max-width: 90vw;
+}
+
 /* For Desktop */
 @media only screen and (min-aspect-ratio: 3/4) {
     .AgeMainText {
