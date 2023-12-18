@@ -223,9 +223,9 @@ function KeyInputForm(props: any) {
                             return (
                             <input 
                                 key={'bltn_key_input_cell' + value}
-                                style={getInputStyle(value)}
                                 className={styles.bltn_key_input_cell}
                                 type='text'
+                                autoCapitalize='off'
                                 onBlur={(e)=>textFieldOnBlur(e)}
                                 onChange={(e) => handleCellTextChange(e, value)}
                                 maxLength='1' size='1'
