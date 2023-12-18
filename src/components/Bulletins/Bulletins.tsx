@@ -3,10 +3,21 @@ import styles from '../../styles/Bulletins.module.css'
 import React, { useState , useEffect } from 'react'
 import Link from 'next/link';
 import KeyInputForm from './CodeInputForm';
+import BulletinsText from './BulletinText';
 
 
 
 function Bulletins(props: none) {
+
+    // const [showText, setShowText] = useState('loren ipsum dolor sit amen. loren ipsum dolor sit amen. loren ipsum dolor sit amen. loren ipsum dolor sit amen. loren ipsum dolor sit amen.')
+    const [showText, setShowText] = useState('')
+
+    const DEBUG_MODE = false
+
+
+    const updateShowText = (newText: string) => {
+        setShowText(newText)
+    }
 
 
 
@@ -20,10 +31,21 @@ function Bulletins(props: none) {
 
 
     return (
-        <div style={{textAlign: 'center', paddingTop: '10vh'}}>
-            <h3>bulletins component</h3>
+        <div className={styles.blnts_container}>
+            <BulletinsText
+                text={showText}
+            />
             {returnHomeElement}
-            <KeyInputForm/>
+            <KeyInputForm
+                updateShowText={updateShowText}
+            />
+            {
+                DEBUG_MODE ?
+                <>
+                <button onClick={() => updateShowText('')}>Click me for nothing</button>
+                <button onClick={() => updateShowText('apple apple apple apple apple apple apple')}>Click me for text</button>
+                </> : ""
+            }
         </div>
     )
 

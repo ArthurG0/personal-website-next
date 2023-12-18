@@ -7,20 +7,18 @@
 
 
 .bulletin_key_input_form {
-    width: 60vw;
     margin: auto;
     display: flex;
     flex-direction: column;
-}
-
-.bulletin_key_input_form , .bulletin_key_input_form * {
-    border: 1px solid red;
+    padding: 1vh 0;
+    border: 3px solid #777777;
 }
 
 .bltn_key_input_row {
     display: flex;
     flex-direction: row;
     justify-content: center;
+
     
 }
 
@@ -28,4 +26,104 @@ input.bltn_key_input_cell {
 
 }
 
+.bltn_text_container {
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    background-color: bisque;
+    padding: 1vh 0;
+    max-height: 1vh;
+    overflow: hidden;
+}
 
+
+.bltn_text_container.hidden {
+    visibility: hidden;
+}
+
+.bltn_text_container:not(.hidden) {
+    visibility: visible;
+    max-height: 65vh;
+    transition: max-height 1s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+    border: 3px solid #777777;
+    border-bottom: 0px;
+}
+
+.bltn_text {
+    font-family: 'Courier New', Courier, monospace;
+    margin: auto;
+    overflow: scroll;
+    height: 100%;
+    padding: 5vh 0;
+}
+
+.bltn_button {
+    background-color: white; /* Green */
+    border: none;
+    color: black;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border: 2px solid #555555;
+    margin: auto
+}
+
+.bltn_button:hover {
+    background-color: #555555;
+    color: white;
+}
+
+
+
+/* For Desktop */
+@media only screen and (min-aspect-ratio: 3/4) {
+    .bulletin_key_input_form {
+        width: 60vw;
+    }
+
+    .bltn_text_container {
+        width: 60vw;
+    }
+
+    .bltn_key_input_row {
+        padding: 0 0 2vh 0;
+    }
+
+    .blnts_container{
+        padding-top: 15vh;
+        text-align: center;
+    }
+
+    .bltn_text {
+        width: 50vw;
+    }
+}
+  
+/* For Mobile */
+@media only screen and (max-aspect-ratio: 3/4) {
+    .bulletin_key_input_form {
+        width: 85vw;
+    }
+    .bltn_text_container {
+        width: 85vw;
+    }
+
+    .bltn_key_input_row {
+        padding: 0 0 5vh 0;
+    }
+
+    .blnts_container{
+        padding-top: 15vh;
+        text-align: center;
+    }
+
+    .bltn_text {
+        width: 80vw;
+    }
+
+}
