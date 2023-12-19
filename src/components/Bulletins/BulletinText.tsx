@@ -13,7 +13,7 @@ function BulletinsText(props: none) {
 
     return (
         <div className={text_container_styles.join(' ')}>
-            <div className={styles.bltn_text_intro}>Here is the text that matched your request:</div>
+            <div className={styles.bltn_text_intro}>Text matching your request:</div>
             <div className={styles.bltn_text}>{props.text}</div>
         </div>
     )

@@ -77,12 +77,21 @@ input.bltn_key_input_cell {
     transition-duration: 0.4s;
     cursor: pointer;
     border: 2px solid #555555;
-    margin: auto
+    margin: auto;
+    font-family: 'Mustica';
 }
 
 .bltn_button:hover {
     background-color: #555555;
     color: white;
+}
+
+input.bltn_key_input_cell:not(:focus) {
+    border: 2px solid #777777;
+}
+
+input.bltn_key_input_cell:focus {
+    border: 2px solid #fe9f06;
 }
 
 
@@ -114,13 +123,7 @@ input.bltn_key_input_cell {
         border-radius: 20px;
     }
 
-    input.bltn_key_input_cell:not(:focus) {
-        border-color: #777777;
-    }
 
-    input.bltn_key_input_cell:focus {
-        border-color: rgb(254, 159, 6);
-    }
 }
   
 /* For Mobile */
@@ -147,14 +150,6 @@ input.bltn_key_input_cell {
 
     input.bltn_key_input_cell {
         border-radius: 15px;
-    }
-
-    input.bltn_key_input_cell:not(:focus) {
-        border-color: #777777;
-    }
-
-    input.bltn_key_input_cell:focus {
-        border-color: rgb(254, 159, 6);
     }
 
 }

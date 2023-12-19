@@ -27,6 +27,15 @@ function KeyInputForm(props: any) {
         useRef(null)
     ]
 
+    const oldValueRefs = [
+        useRef(''),
+        useRef(''),
+        useRef(''),
+        useRef(''),
+        useRef(''),
+        useRef('')
+    ]
+
     const sleep = ms => new Promise(r => setTimeout(r, ms));
 
     const longTestText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Commodo elit at imperdiet dui accumsan. Accumsan in nisl nisi scelerisque eu. Suspendisse faucibus interdum posuere lorem ipsum dolor sit amet. Diam maecenas ultricies mi eget mauris pharetra et ultrices neque. Lorem mollis aliquam ut porttitor leo a diam. Mauris rhoncus aenean vel elit scelerisque. Risus quis varius quam quisque id diam. Aliquam ut porttitor leo a diam. Ut diam quam nulla porttitor massa id neque aliquam. Facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum dui. Donec et odio pellentesque diam volutpat commodo sed egestas egestas. Ultrices dui sapien eget mi. Integer vitae justo eget magna fermentum iaculis eu non. Scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt. Adipiscing elit ut aliquam purus sit amet. Ullamcorper morbi tincidunt ornare massa eget egestas purus viverra.'
@@ -47,23 +56,6 @@ function KeyInputForm(props: any) {
     }
 
 
-    const getInputStyle = (index: Number) => {
-
-        let styleObject = {
-            padding: '1.4vw',
-            margin: '1vw',
-            backgroundColor: 'white',
-            color: 'black',
-            borderRadius: '20px',
-            fontSize: '1.6rem',
-            textAlign: 'center',
-
-        }
-        
-
-        return styleObject
-    }
-
     const formOnClick = (e: Event) => {
         e.preventDefault()
         console.log('form clicked')
@@ -81,28 +73,55 @@ function KeyInputForm(props: any) {
         setInputString('')
 
         inputRefs.forEach(ref => ref.current.value = '')
+        oldValueRefs.forEach(ref => ref.current = '')
+        makeInputActive(0);
 
         props.updateShowText('')
     }
 
+    const constructStringFromInputs = () => {
+        let s = ''
+            for (let i = 0; i < NUM_KEYS_IN_CODE; i++) {
+                if (inputRefs[i].current.value == '') break;
+                s += inputRefs[i].current.value;
+            }
+        return s
+    }
+
     const handleCellTextChange = (e:Event, index: Number) => {
-        console.log('text changed in cell')
-        console.log(e)
-        console.log(index)
+        // console.log('text changed in cell')
+        // console.log(e)
+        // console.log(index)
 
-        if(e.target.value == ''){
-            setInputString(() => {
-                let s = ''
-                inputRefs.forEach(x => s+=x.current.value)
-                return s
-            })
+        // change value of strings
+        setInputString(constructStringFromInputs());
+        oldValueRefs[index].current = e.target.value;
+
+
+    }
+
+    const handleKeyUp = (e: Event, index: Number) => {
+        // console.log('key up in cell')
+        // console.log(e)
+
+
+        // this is a reagular user input of 1 string
+        if (e.key.length == 1){
+            handleCellTextChange(e, index)
+            makeInputSelect(index+1);
         }
 
-        else if(e.target.value.length == 1){
-            setInputString((currValue) => {
-                return currValue + e.target.value
-            })
+        else if (e.key === 'Backspace'){
+            console.log('oldalue ref:', oldValueRefs[index].current)
+
+            if(oldValueRefs[index].current == ''){
+                console.log('need to change to prev character')
+                inputRefs[Math.max(0, index-1)].current.select()
+            } else {
+                handleCellTextChange(e, index)
+            }
         }
+
 
     }
 
@@ -175,24 +194,29 @@ function KeyInputForm(props: any) {
         //     setTimeout(() => props.updateShowText(res), 2500)
         
         // }
-
-        
-
-        
-
     } 
+
+    const makeInputActive = (index) => {
+        index = Math.max(index,0);
+        index = Math.min(index,NUM_KEYS_IN_CODE-1);
+        inputRefs[index].current.focus()
+    }
+
+    const makeInputSelect = (index) => {
+        index = Math.max(index,0);
+        index = Math.min(index,NUM_KEYS_IN_CODE-1);
+        inputRefs[index].current.select()
+    }
 
 
 
     useEffect(() => {
 
-        inputRefs.forEach(x => x.current.blur())
-
         if (formIsActive){
-            inputRefs[Math.min(inputString.length, NUM_KEYS_IN_CODE-1)].current.focus()
+            makeInputActive(0);
         }
 
-    }, [formIsActive, inputString])
+    }, [formIsActive])
 
     useEffect(() => {
         console.log(inputString)
@@ -227,7 +251,8 @@ function KeyInputForm(props: any) {
                                 type='text'
                                 autoCapitalize='off'
                                 onBlur={(e)=>textFieldOnBlur(e)}
-                                onChange={(e) => handleCellTextChange(e, value)}
+                                // onChange={(e) => handleCellTextChange(e, value)}
+                                onKeyUp={(e) => handleKeyUp(e, value)}
                                 maxLength='1' size='1'
                                 ref={inputRefs[value]}
                             ></input>

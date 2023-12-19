@@ -1,6 +1,6 @@
 import Bulletins from '../components/Bulletins/Bulletins'
 
-export default function RussianTyper() {
+export default function BulletinsComponent() {
     return (
       <Bulletins/>
     )

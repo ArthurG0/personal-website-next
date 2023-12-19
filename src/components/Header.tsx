@@ -158,6 +158,8 @@ return (
             <Link className="linkElement" href="/startdate">Start Date</Link>
             <Link className="linkElement" href="/russian-typer">Russian Typer</Link>
             <Link className="linkElement" href="/age">Age</Link>
+            <Link className="linkElement" href="/bulletins">Texts</Link>
+
         </div>
 
         <div id="body-header-links-container-mobile">
@@ -168,6 +170,7 @@ return (
                 <Link className="linkElement" href="/startdate">Start Date</Link>
                 <Link className="linkElement" href="/russian-typer">Russian Typer</Link>
                 <Link className="linkElement" href="/age">Age</Link>
+                <Link className="linkElement" href="/bulletins">Texts</Link>
             </div>
             {returnHomeElement}
         </div>
