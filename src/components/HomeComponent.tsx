@@ -61,7 +61,9 @@ function HomeComponent(props: any) {
         <div className={styles.HomeMainDiv}>
             <div className={styles.HomeGreeting}>{ getGreetingText() }</div>
             <div className={[styles.HomeAbout, styles.HomePageName].join(' ')}>My name is Arthur Gatin.</div>
-            <Image className={styles.ProfilePic} src='/images/linkedin-pic.jpeg' alt="Arthur Gatin Avatar" width={400} height={400} quality={90}></Image>
+            <div className={styles.HomeArthurPicContainer}>
+                <Image className={styles.ProfilePic} src='/images/linkedin-pic.jpeg' alt="Arthur Gatin Avatar" width={400} height={400} quality={90}></Image>
+            </div>
             <div className={[styles.Home, styles.Flex, styles.Row].join(' ')}>
                 <a href='https://linkedin.com/in/arthurg0' target='_blank'>
                     <img className={[styles.Home, styles.Icon].join(' ')} id="linkedInIcon" src='./icons/linkedin-logo.svg'></img>
@@ -76,7 +78,7 @@ function HomeComponent(props: any) {
             <div className={styles.HomeAbout}>I have graduated from University of California, Santa Barbara as a Bachelor of Computer Science.
             <br/>
             <span className='el-strikethrough'>I am currently enrolled in a 5-year Master's Program at UCSB.</span></div>
-            <div className={styles.HomeAbout}>I quit my Master's degree to dive deep into industry. I am now a Software Engineer at Amazon.</div>
+            <div className={styles.HomeAbout}>I quit my Master's degree to dive into industry. Now I am now a Software Engineer at Amazon.</div>
 
             <hr/>
 

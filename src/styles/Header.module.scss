@@ -1,0 +1,113 @@
+@import 'globaldefs';
+
+$header-white: #fff;
+
+/* For Desktop */
+@media only screen and (min-aspect-ratio: 3/4) {
+    .header_container_mobile {
+        display: none;
+    }
+
+    .header_container_desktop {
+        display: block;
+    }
+}
+  
+/* For Mobile */
+@media only screen and (max-aspect-ratio: 3/4) {
+
+    .header_container_mobile {
+        display: block;
+    }
+
+    .header_container_desktop {
+        display: none;
+    }
+}
+
+.header_container_desktop, .header_container_mobile {
+    background-color: $custom-orange;
+    color: $header-white;
+}
+
+.body_header {
+}
+
+.header_container_desktop {
+    height: 6vh;
+}
+
+.body_header_links_container {
+    display: flex;
+    width: 60vw;
+    margin: auto;
+    height: 100%;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.Header_Hamburger_Icon {
+    position: absolute;
+    right: 3vw;
+    top: 2.5vh;
+}
+
+.Header_Hamburger_Icon > svg {
+    transition: transform 0.6s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+}
+
+.Header_Hamburger_Icon.Header_Open > svg{
+    transform: rotate(-90deg);
+}
+
+.header_container_mobile_links {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 80%;
+}
+
+.header_container_mobile {
+    position: relative;
+    transition: height 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+    padding: 5px;
+}
+
+
+.header_container_mobile:not(.Header_Open) {
+    height: 10vh;
+}
+
+.header_container_mobile.Header_Open {
+    height: 20vh;
+}
+
+.header_container_mobile:not(.Header_Open) .linkElement {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.header_container_mobile.Header_Open .linkElement {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+    transition-delay: 0.5s;
+    transition-property: opacity;
+    min-width: 40%;
+}
+
+.header_container_mobile_links > .linkElement {
+    min-height: 22px;
+}
+
+.linkElement {
+    flex-basis: 25%;
+    text-align: center;
+    align-self: center;
+    display: flex;
+}
+
+.linkElement  * {
+    margin: auto;
+}
