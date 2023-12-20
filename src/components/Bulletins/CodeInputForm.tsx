@@ -107,8 +107,8 @@ function KeyInputForm(props: any) {
 
         // this is a reagular user input of 1 string
         if (e.key.length == 1){
-            handleCellTextChange(e, index)
             makeInputSelect(index+1);
+            handleCellTextChange(e, index)
         }
 
         else if (e.key === 'Backspace'){

@@ -1,3 +1,5 @@
+@import 'globaldefs';
+
 .HomeMainDiv {
     width: 90vw;
     /* height: 90vh; */
@@ -5,32 +7,28 @@
     margin: 5vh 5vw;
     border: none;
     scroll-behavior: smooth;
+    color: $global-darkgray;
     font-family: 'Mustica';
-    color: black;
 }
 
 .ProfilePic {
     border-radius: 100%;
-    width: 35vh;
 }
 
 .HomeGreeting {
-    font-family: 'Mustica';
     font-size: 2.5em;
     padding-top: 3vh;
     padding-bottom: 0vh;
 }
 
 .HomeSection {
-    font-family: 'Mustica';
     font-size: 2.5em;
     padding-top: 5vh;
     padding-bottom: 3vh;
 }
 
 .HomeAbout {
-    font-family: 'Mustica';
-    padding: 1.5vh 1.5vh 6.5vh 1.5vh;
+    padding: 1.5vh 1.5vh 4.5vh 1.5vh;
     font-size: 1.3em;
     width: 70%;
     margin: auto;
@@ -70,4 +68,8 @@
     .HomeAbout {
         font-size: 1.1em;
     }
+}
+
+.HomePageName {
+    margin-top: 2rem;
 }
