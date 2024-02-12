@@ -35,9 +35,15 @@ export default function AgeComponent() {
         
     }
 
-    const computeAge = () => {
+    function computeAge() {
 
         console.log('computeAge called')
+
+        setStateCounter((oldValue) => {
+            return oldValue + 1
+        })
+
+        if(pageLoading) return;
 
         const currentDate = new Date()
 
@@ -60,9 +66,7 @@ export default function AgeComponent() {
         console.log('full age: ' + Math.floor(years))
         console.log(years - Math.floor(years))
 
-        setStateCounter((oldValue) => {
-            return oldValue + 1
-        })
+        
 
 
     }
@@ -71,26 +75,21 @@ export default function AgeComponent() {
 
     // when the page loads, set a timer to refresh every second
     useEffect(() => {
+        
         loadBirthDate()
+        
+    }, [])
 
+    useEffect(() => {
+        timer = setInterval(computeAge, 1000)
         return () => {
             if (timer) {
                 clearInterval(timer)
             }
         }
         
-    }, [])
-
-    useEffect(() => {
-        setPageLoading(false)
-        timer = setInterval(() => computeAge(), 1000)
-        return () => {
-            if (timer) {
-                clearInterval(timer)
-            }
-        }
-
     }, [birth_date])
+
 
     const returnHomeElement = 
     <Link className={styles.homeIcon} href="/">

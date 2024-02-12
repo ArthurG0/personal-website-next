@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import styles from '../styles/Reaction.module.css'
+import ReturnHomeCompoment from './ReturnHomeComponent'
 
 function Reaction(props) {
 
@@ -15,6 +16,7 @@ function Reaction(props) {
 
     return (
         <div className={styles.ReactionWrapper}>
+            <ReturnHomeCompoment/>
             <div className={styles.BodyHeader}>Test Your Reaction Time!</div>
             <div className={styles.BodyInfo}>The field will turn yellow, then green. When the field turns green, click as quickly as possible. Activate the field below to start.</div>
             <div className={styles.ReactionResult}>---</div>

@@ -9,6 +9,7 @@
 .homeIcon {
     color: black;
     position: absolute;
+    z-index: 5;
 }
 
 .AgeMainText {

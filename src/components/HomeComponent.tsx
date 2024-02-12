@@ -78,7 +78,7 @@ function HomeComponent(props: any) {
             <div className={styles.HomeAbout}>I have graduated from University of California, Santa Barbara as a Bachelor of Computer Science.
             <br/>
             <span className='el-strikethrough'>I am currently enrolled in a 5-year Master's Program at UCSB.</span></div>
-            <div className={styles.HomeAbout}>I quit my Master's degree to dive into industry. Now I am now a Software Engineer at Amazon.</div>
+            <div className={styles.HomeAbout}>I quit my Master's degree to dive into industry. Now I am a Software Engineer at Amazon.</div>
 
             <hr/>
 

@@ -3,6 +3,7 @@ import '../styles/Home.module.css'
 import { initializeApp } from "firebase/app";
 import { getFirestore , collection, doc, getDocs, setDoc } from "firebase/firestore";
 import styles from '../styles/MontyHall.module.css'
+import ReturnHomeComponent from './ReturnHomeComponent';
 
 
 function MontyHall(props) {
@@ -153,6 +154,7 @@ function MontyHall(props) {
 
     return (
         <div className={styles.MontyHallMain}>
+            <ReturnHomeComponent/>
             {infoShown ? 
                 <div>
                     <div className={styles.MontyHallOverlay} onClick={exitOverlay}>
@@ -234,9 +236,13 @@ function MontyHall(props) {
         // console.log(FirestoreRef.current)
         const querySnapshot = await getDocs(collection(FirestoreRef.current, 'guess-stats'));
         const document = querySnapshot.docs.find(x => x.id === process.env.NEXT_PUBLIC_MH_DATABASE_DOCUMENT_ID)
-        let initial_data = Object.assign({} , document.data())
-        setStatsData(initial_data)
-        setStatsLoaded(true)
+        try {
+            let initial_data = Object.assign({} , document.data())
+            setStatsData(initial_data)
+            setStatsLoaded(true)
+        } catch (e) {
+
+        }
 
     }
 
