@@ -74,7 +74,7 @@ export default function StartDate() {
         let startDate = new Date(myStartDate)
         let currentTime = new Date(Date.now())
 
-        readable_start_date = `${monthNumToName.get(startDate.getMonth())} ${startDate.getDate()}`
+        readable_start_date = `${monthNumToName.get(startDate.getMonth())} ${startDate.getDate()}, ${startDate.getFullYear()}`
 
         // console.log(currentTime)
         // console.log(startDate)
