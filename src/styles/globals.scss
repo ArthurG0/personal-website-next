@@ -25,6 +25,11 @@ body {
 
 body {
   background-color: $background-color;
+  transition: background-color 2s ease;
+}
+
+body.dark-matrix {
+  background-color: $background-color-darkmode !important;
 }
 
 a {

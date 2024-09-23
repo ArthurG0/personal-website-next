@@ -1,0 +1,30 @@
+.canvas {
+    background-color: black;
+    image-rendering: pixelated;
+}
+
+.canvasContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.helloNeoCtnr {
+    display: flex;
+    justify-content: center;
+    margin: 3vh;
+
+}
+.helloNeoTxt {
+    text-align: center;
+    padding: 0;
+}
+
+.neoDots {
+    width: 2vw;
+    padding-left: 2px;
+}
+
+.neoDotsSpace {
+    width: 2vw;
+    padding-right: 2px;
+}
