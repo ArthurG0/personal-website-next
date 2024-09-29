@@ -18,6 +18,10 @@ export default function AgeComponent() {
     const [birth_date, setBirthDate] = useState(new Date('1970-01-01'))
     const [stateCounter, setStateCounter] = useState(0)
 
+    const FPS = 20
+    const DEBUG_ON = true
+    const DECIMAL_POINTS = 11
+
     const loadBirthDate = async () => {
         console.log(BIRTH_DATE_FUNCTION_URL)
         const res = await fetch(BIRTH_DATE_FUNCTION_URL, {
@@ -36,52 +40,52 @@ export default function AgeComponent() {
     }
 
     function computeAge() {
-
-        console.log('computeAge called')
-
+        let timerStart = performance.now()
+        
         setStateCounter((oldValue) => {
             return oldValue + 1
         })
-
+        
         if(pageLoading) return;
-
+        
         const currentDate = new Date()
-
+        
         console.log(birth_date)
-
+        
         // compute difference between current date and birth date
         const difference = currentDate.getTime() - birth_date.getTime()
-
-        // console log difference
-        console.log('difference: ' + difference)
-
+        
         // convert difference to years
         const years = difference / (1000 * 60 * 60 * 24 * 365)
-
-        // set full age and decimal age
-        setFullAge(Math.floor(years))
-        setDecimalAge((years - Math.floor(years)).toString().substring(1,10))
-
-        // console log full age and decimal age
-        console.log('full age: ' + Math.floor(years))
-        console.log(years - Math.floor(years))
-
         
+        const fullYears = Math.floor(years).toString()
+        const decimalYears = (years - Math.floor(years)).toString().substring(1,DECIMAL_POINTS)
+        
+        // set full age and decimal age
+        setFullAge(fullYears)
+        setDecimalAge(decimalYears)
+        
+        // print out the full age and decimal age
+        console.log(fullYears, decimalYears)
 
 
+        let timerEnd = performance.now()
+        if (DEBUG_ON) console.log('Time to process tick:', timerEnd - timerStart, 'ms')
     }
 
     let timer = null
 
     // when the page loads, set a timer to refresh every second
     useEffect(() => {
-        
+        let timerStart = performance.now()
         loadBirthDate()
-        
+        let timerEnd = performance.now()
+        if (DEBUG_ON) console.log('Time to process tick:', timerEnd - timerStart, 'ms')
     }, [])
 
     useEffect(() => {
-        timer = setInterval(computeAge, 1000)
+        const refreshFrequency = 1000 / FPS
+        timer = setInterval(computeAge, refreshFrequency)
         return () => {
             if (timer) {
                 clearInterval(timer)
