@@ -6,16 +6,18 @@ import ReturnHomeCompoment from "./ReturnHomeComponent"
 function MatrixRainComponent(props: any) {
 
     const UPDATE_STATE_IS_JUST_RANDOM_LETTERS = false
-    const ROW_COUNT = 25
-    const COLUMN_COUNT = 70
     const LETTER_WIDTH_PX = 24
     const LETTER_HEIGHT_PX = 32
     const FPS = 10
     const DEBUG_NEW_RAINS = false
+    const DEBUG_BUTTONS_ON = false
 
     // matrix rail text shape is 25x70
 
-    const [letterState, setLetterState] = useState(getDefaultState())
+    const [ROW_COUNT, setRowCount] = useState(null)
+    const [COLUMN_COUNT, setColumnCount] = useState(null)
+    const [isReady, setIsReady] = useState(false)
+    const [letterState, setLetterState] = useState(null)
     const [desiredCapacity, setDesiredCapacity] = useState(0.7)
     const [tickCounter, setTickCounter] = useState(0)
     const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -23,19 +25,34 @@ function MatrixRainComponent(props: any) {
 
     useEffect(() => {
         console.log('useEffect called')
+        if (isMobile()) {
+            setColumnCount(20)
+            setRowCount(40)
+        } else {
+            setColumnCount(70)
+            setRowCount(25)
+        }
+        setIsReady(true)
+        
+    }, [])
+
+    useEffect(() => {
+        setLetterState(getDefaultState(ROW_COUNT, COLUMN_COUNT))
         const msPerFrame = 1000 / FPS
 
         const interval = setInterval(() => {
             setTickCounter(tickCounter => tickCounter + 1)
         }, msPerFrame)
         intervalRef.current = interval
-        
         setCanvasAttributes(canvasRef.current)
-        return (() => clearInterval(interval))
-    }, [])
+        return (() => clearInterval(intervalRef.current))
+
+
+    }, [isReady])
 
     useEffect(() => {
         // high accuracy stopwatch initialize
+        if (letterState == null) return
         let timeBegin = performance.now()
         updateLetters(tickCounter)
         paintCanvas(tickCounter)
@@ -46,8 +63,12 @@ function MatrixRainComponent(props: any) {
         if (tickCounter % 40 == 39) setDesiredCapacity(getNewDesiredCapacity())
     }, [tickCounter])
 
+    function isMobile() {
+        return window.innerWidth < window.innerHeight
+    }
     function paintCanvas() {
         clearCanvas()
+        if (letterState == null) return
         for (let row = 0; row < letterState.letters.length; row++) {
             for (let column = 0; column < letterState.letters[row].length; column++) {
                 if (letterState.letters[row][column].key != -1) {
@@ -58,7 +79,6 @@ function MatrixRainComponent(props: any) {
     }
 
     function updateLetters(tick) {
-        
         setLetterState(currentState => transformState(currentState, tick))
     }
     function getNewDesiredCapacity() {
@@ -336,6 +356,10 @@ function MatrixRainComponent(props: any) {
     }
 
     function transformState(currentState, tick) {
+        if (currentState == null) return {
+            letters: getEmptyLetters(ROW_COUNT, COLUMN_COUNT),
+            rain: getEmptyRains(COLUMN_COUNT)
+        }
         if (UPDATE_STATE_IS_JUST_RANDOM_LETTERS) {
             return generateRandomLettersBoard()
         } else {
@@ -471,10 +495,10 @@ function MatrixRainComponent(props: any) {
         context!.fillText("0123456789",0,38);
     }
 
-    function getDefaultState() {
+    function getDefaultState(nRows, nCols) {
         return {
-            letters: getEmptyLetters(ROW_COUNT, COLUMN_COUNT),
-            rain: getEmptyRains(COLUMN_COUNT)
+            letters: getEmptyLetters(nRows, nCols),
+            rain: getEmptyRains(nCols)
         }
     }
 
@@ -523,7 +547,9 @@ function MatrixRainComponent(props: any) {
     }
 
     function clearCanvas() {
-        canvasRef.current.getContext('2d').clearRect(0, 0, canvasRef.current.width, canvasRef.current.height)
+        let canvasDrawingWidth = LETTER_WIDTH_PX * COLUMN_COUNT
+        let canvasDrawingHeight = LETTER_HEIGHT_PX * ROW_COUNT
+        canvasRef.current.getContext('2d').clearRect(0, 0, canvasDrawingWidth, canvasDrawingHeight)
     }
 
     function setCanvasAttributes(canvas) {
@@ -532,6 +558,9 @@ function MatrixRainComponent(props: any) {
         // calculate total dimensions of board
         let canvasDrawingWidth = LETTER_WIDTH_PX * COLUMN_COUNT
         let canvasDrawingHeight = LETTER_HEIGHT_PX * ROW_COUNT
+
+        // print total dimensions of board
+        console.log(`canvas dimensions: ${canvasDrawingWidth} x ${canvasDrawingHeight}`)
 
         const ratio = window.devicePixelRatio;
         // print out the device width and height in pixels
@@ -581,10 +610,14 @@ function MatrixRainComponent(props: any) {
             <div id="cnvs-ctr" className={styles.canvasContainer}>
                 {canvas}
             </div>
-            <button onClick={() => helper1()}>stop timer</button>
-            <button onClick={() => helper2()}>helper 2</button>
-            <button onClick={() => helper3()}>tick+1</button>
-            <button onClick={() => helper4()}>clear cnvs</button>
+            {
+                DEBUG_BUTTONS_ON ? 
+                <div>
+                    <button onClick={() => helper1()}>stop timer</button>
+                    <button onClick={() => helper2()}>helper 2</button>
+                    <button onClick={() => helper3()}>tick+1</button>
+                    <button onClick={() => helper4()}>clear cnvs</button>
+                </div> : ""}
             <button onClick={() => helper5()}>darkB</button>
         </div>
     )
