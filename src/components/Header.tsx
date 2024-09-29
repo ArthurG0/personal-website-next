@@ -71,6 +71,9 @@ return (
                 <Link className={styles.linkElement} href="/bulletins">
                     <div>Texts</div>
                 </Link>
+                <Link className={styles.linkElement} href="/matrixrain">
+                    <div>Matrix Rain</div>
+                </Link>
             </div>
         </div>
 
@@ -97,6 +100,9 @@ return (
                 </Link>
                 <Link className={styles.linkElement} href="/bulletins">
                     <div>Texts</div>
+                </Link>
+                <Link className={styles.linkElement} href="/matrixrain">
+                    <div>Matrix Rain</div>
                 </Link>
             </div>
         </div>

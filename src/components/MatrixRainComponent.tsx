@@ -1,6 +1,7 @@
 // @ts-nocheck
 import { useEffect, useState, useRef } from "react"
 import styles from '../styles/MatrixRain.module.css'
+import ReturnHomeCompoment from "./ReturnHomeComponent"
 
 function MatrixRainComponent(props: any) {
 
@@ -10,6 +11,7 @@ function MatrixRainComponent(props: any) {
     const LETTER_WIDTH_PX = 24
     const LETTER_HEIGHT_PX = 32
     const FPS = 10
+    const DEBUG_NEW_RAINS = false
 
     // matrix rail text shape is 25x70
 
@@ -196,10 +198,12 @@ function MatrixRainComponent(props: any) {
         let capacityForNew = ( desiredActiveRainsAtAnyPoint - currentActiveRains.length )
         let changeOfNewGeneratedThisTick = ( capacityForNew / 50 / COLUMN_COUNT )
 
-        console.log(`currentActiveRains: ${currentActiveRains.length}`)
-        console.log(`desiredActiveRainsAtAnyPoint: ${desiredActiveRainsAtAnyPoint}`)
-        console.log(`using desiredCapacity: ${desiredCapacity}`)
-        console.log(`capacity for new: ${capacityForNew}`)
+        if (DEBUG_NEW_RAINS) {
+            console.log(`currentActiveRains: ${currentActiveRains.length}`)
+            console.log(`desiredActiveRainsAtAnyPoint: ${desiredActiveRainsAtAnyPoint}`)
+            console.log(`using desiredCapacity: ${desiredCapacity}`)
+            console.log(`capacity for new: ${capacityForNew}`)
+        }
 
         for (let i = 0; i < currentEmptyRains.length; i++) {
             let emptyRainIndex = currentEmptyRains[i].column
@@ -565,6 +569,8 @@ function MatrixRainComponent(props: any) {
     return (
         <div>
             <div id="niss"></div>
+            <ReturnHomeCompoment/>
+
             <div >{tickCounter}</div>
 
             <div className={styles.helloNeoCtnr}>
