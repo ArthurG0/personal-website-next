@@ -1,11 +1,15 @@
 .canvas {
     background-color: black;
-    image-rendering: pixelated;
+    /* image-rendering: pixelated; */
 }
 
 .canvasContainer {
     display: flex;
     justify-content: center;
+}
+
+div.canvasContainer+canvas {
+    width: 1600px;
 }
 
 .helloNeoCtnr {

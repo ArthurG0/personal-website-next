@@ -6,11 +6,12 @@ import ReturnHomeCompoment from "./ReturnHomeComponent"
 function MatrixRainComponent(props: any) {
 
     const UPDATE_STATE_IS_JUST_RANDOM_LETTERS = false
-    const LETTER_WIDTH_PX = 24
-    const LETTER_HEIGHT_PX = 32
-    const FPS = 10
+    const LETTER_WIDTH_PX = 12
+    const LETTER_HEIGHT_PX = 18
+    const FPS = 20
     const DEBUG_NEW_RAINS = false
     const DEBUG_BUTTONS_ON = false
+    const DEBUG_LETTERS = false
 
     // matrix rail text shape is 25x70
 
@@ -82,7 +83,7 @@ function MatrixRainComponent(props: any) {
         setLetterState(currentState => transformState(currentState, tick))
     }
     function getNewDesiredCapacity() {
-        return generateBellCurveRandom(0.75, 0.05)
+        return generateBellCurveRandom(0.65, 0.05)
     }
     function generateBellCurveRandom(mean = 0, standardDeviation = 1) {
         let u = 0, v = 0;
@@ -97,6 +98,7 @@ function MatrixRainComponent(props: any) {
         return z * standardDeviation + mean;
     }
 
+    // not used
     function generateRandomLettersBoard() {
         let numRandomLetters = 10
         let board = getDefaultLetters(ROW_COUNT, COLUMN_COUNT)
@@ -104,104 +106,7 @@ function MatrixRainComponent(props: any) {
             let randomLetter = generateRandomLetterAndLocation(25, 70)
             board[randomLetter.r][randomLetter.c] = {key: randomLetter.l}
         }
-        // board[0][0] = {key: '0'}
-        // board[0][1] = {key: '1'}
-        // board[0][2] = {key: '2'}
-        // board[0][3] = {key: '3'}
-        // board[0][4] = {key: '4'}
-        // board[0][5] = {key: '5'}
-        // board[0][6] = {key: '6'}
-        // board[0][7] = {key: '7'}
-        // board[0][8] = {key: '8'}
-        // board[0][9] = {key: '9'}
-        // board[1][0] = {key: '0'}
-        // board[1][1] = {key: '1'}
-        // board[1][2] = {key: '2'}
-        // board[1][3] = {key: '3'}
-        // board[1][4] = {key: '4'}
-        // board[1][5] = {key: '5'}
-        // board[1][6] = {key: '6'}
-        // board[1][7] = {key: '7'}
-        // board[1][8] = {key: '8'}
-        // board[1][9] = {key: '9'}
-
-        // board[0][10] = {key: '0'}
-        // board[0][11] = {key: '1'}
-        // board[0][12] = {key: '2'}
-        // board[0][13] = {key: '3'}
-        // board[0][14] = {key: '4'}
-        // board[0][15] = {key: '5'}
-        // board[0][16] = {key: '6'}
-        // board[0][17] = {key: '7'}
-        // board[0][18] = {key: '8'}
-        // board[0][19] = {key: '9'}
-
-        // board[0][30] = {key: '0'}
-        // board[0][31] = {key: '1'}
-        // board[0][32] = {key: '2'}
-        // board[0][33] = {key: '3'}
-        // board[0][34] = {key: '4'}
-        // board[0][35] = {key: '5'}
-        // board[0][36] = {key: '6'}
-        // board[0][37] = {key: '7'}
-        // board[0][38] = {key: '8'}
-        // board[0][39] = {key: '9'}
-
-        // board[0][40] = {key: '0'}
-        // board[0][41] = {key: '1'}
-        // board[0][42] = {key: '2'}
-        // board[0][43] = {key: '3'}
-        // board[0][44] = {key: '4'}
-        // board[0][45] = {key: '5'}
-        // board[0][46] = {key: '6'}
-        // board[0][47] = {key: '7'}
-        // board[0][48] = {key: '8'}
-        // board[0][49] = {key: '9'}
-
-        // board[0][50] = {key: '0'}
-        // board[0][51] = {key: '1'}
-        // board[0][52] = {key: '2'}
-        // board[0][53] = {key: '3'}
-        // board[0][54] = {key: '4'}
-        // board[0][55] = {key: '5'}
-        // board[0][56] = {key: '6'}
-        // board[0][57] = {key: '7'}
-        // board[0][58] = {key: '8'}
-        // board[0][59] = {key: '9'}
-
-        // board[0][60] = {key: '0'}
-        // board[0][61] = {key: '1'}
-        // board[0][62] = {key: '2'}
-        // board[0][63] = {key: '3'}
-        // board[0][64] = {key: '4'}
-        // board[0][65] = {key: '5'}
-        // board[0][66] = {key: '6'}
-        // board[0][67] = {key: '7'}
-        // board[0][68] = {key: '8'}
-        // board[0][69] = {key: '9'}
-
-        // board[0][20] = {key: '0'}
-        // board[0][21] = {key: '1'}
-        // board[0][22] = {key: '2'}
-        // board[0][23] = {key: '3'}
-        // board[0][24] = {key: '4'}
-        // board[0][25] = {key: '5'}
-        // board[0][26] = {key: '6'}
-        // board[0][27] = {key: '7'}
-        // board[0][28] = {key: '8'}
-        // board[0][29] = {key: '9'}
-
-        // board[0][20] = {key: '0'}
-        // board[0][21] = {key: '1'}
-        // board[0][22] = {key: '2'}
-        // board[0][23] = {key: '3'}
-        // board[0][24] = {key: '4'}
-        // board[0][25] = {key: '5'}
-        // board[0][26] = {key: '6'}
-        // board[0][27] = {key: '7'}
-        // board[0][28] = {key: '8'}
-        // board[0][29] = {key: '9'}
-
+    
         return {
             letters: board,
             rain: getEmptyRains(COLUMN_COUNT)
@@ -216,7 +121,7 @@ function MatrixRainComponent(props: any) {
         let currentEmptyRains = currentRains.filter(rain => (!rain.active))
         let desiredActiveRainsAtAnyPoint = Math.floor(desiredCapacity * COLUMN_COUNT)
         let capacityForNew = ( desiredActiveRainsAtAnyPoint - currentActiveRains.length )
-        let changeOfNewGeneratedThisTick = ( capacityForNew / 50 / COLUMN_COUNT )
+        let chanceOfNewGeneratedThisTick = ( capacityForNew / 50 / COLUMN_COUNT )
 
         if (DEBUG_NEW_RAINS) {
             console.log(`currentActiveRains: ${currentActiveRains.length}`)
@@ -227,7 +132,7 @@ function MatrixRainComponent(props: any) {
 
         for (let i = 0; i < currentEmptyRains.length; i++) {
             let emptyRainIndex = currentEmptyRains[i].column
-            let thisColumnChance = changeOfNewGeneratedThisTick
+            let thisColumnChance = chanceOfNewGeneratedThisTick
             // if there is an active rain to the left, decrease change of new rain in this column
             if (emptyRainIndex > 0 && currentRains[emptyRainIndex-1].active) {
                 thisColumnChance = thisColumnChance * 0.9
@@ -240,10 +145,21 @@ function MatrixRainComponent(props: any) {
             if (Math.random() < thisColumnChance) {
                 let emptyRainIndex = currentEmptyRains[i].column
                 newRains[emptyRainIndex] = generateSingleNewRain(emptyRainIndex)
+
+                // in 5% of cases, generate a second rain in the left column if it is empty
+                if (Math.random() < 0.05 ) {
+                    if (emptyRainIndex > 0 && !currentRains[emptyRainIndex-1].active) {
+                        newRains[emptyRainIndex-1] = generateSingleNewRain(emptyRainIndex-1)
+                        newRains[emptyRainIndex-1].age = newRains[emptyRainIndex].age
+                        newRains[emptyRainIndex-1].speed = newRains[emptyRainIndex].speed
+                        
+                    }
+                }
             }
         }
 
         for (let i = 0; i < newRains.length; i++) {
+            if (tick % newRains[i].speed != 0) continue
             if (newRains[i].active) {
                 newRains[i].age += 1
                 if (newRains[i].cleanup) {
@@ -268,6 +184,10 @@ function MatrixRainComponent(props: any) {
     function getNextStateLetters(oldLetters, rains, tick) {
         let newLetters = JSON.parse(JSON.stringify(oldLetters))
         for (let i = 0; i < rains.length; i++) {
+            if (tick % rains[i].speed != 0) continue;
+            for (let row = 0; row < ROW_COUNT; row++) {
+                newLetters[row][i].blueHighlightLeft -= 1
+            }
             if (rains[i].active) {
                 let rainAge = rains[i].age
                 if (rainAge > 0 && rainAge <= ROW_COUNT) {
@@ -296,32 +216,54 @@ function MatrixRainComponent(props: any) {
 
         for (let row = 0; row < ROW_COUNT; row++) {
             for (let column = 0; column < COLUMN_COUNT; column++) {
-                // randomly change style
-                if (newLetters[row][column].key != -1 && Math.random() < 0.1) {
+                if (tick % rains[column].speed == 0) {
                     newLetters[row][column].style = getChangedLetterStyle(
-                        newLetters[row][column].style,
-                        rains[column].age,
-                        rains[column].maxAge
+                        newLetters[row][column].style, // current style,
+                        row, // letter's row
+                        rains[column].age, // age of rain
+                        rains[column].maxAge, // max age of rain
+                        rains[column].lettersDimTime // lettersDimTime
+
                     )
                 }
-                // for each letter, if rain's age - row >= lettersSwitchTime, switch to a random letter and style
-                if (newLetters[row][column].key != -1) {
-                    if (rains[column].age - row == rains[column].lettersSwitchTime) {
-                        newLetters[row][column].key = generateRandomLetter()
-                        newLetters[row][column].style = getNewLetterStyle()
-                    }
-                }
+                // // randomly change style
+                // if (newLetters[row][column].key != -1 && Math.random() < 0.4 && tick % rains[column].speed == 0) {
+                //     newLetters[row][column].style = getChangedLetterStyle(
+                //         newLetters[row][column].style,
+                //         rains[column].age,
+                //         rains[column].maxAge
+                //     )
+                // }
+                // // for each letter, if rain's age - row >= lettersSwitchTime, switch to a random letter and style
+                // if (newLetters[row][column].key != -1) {
+                //     if (rains[column].age - row == rains[column].lettersSwitchTime && tick % rains[column].speed == 0) {
+                //         newLetters[row][column].key = generateRandomLetter()
+                //         newLetters[row][column].style = getNewLetterStyle()
+                //     }
+                // }
             }
         }
         for (let row = 0; row < ROW_COUNT; row++) {
             for (let column = 0; column < COLUMN_COUNT; column++) {
                 if (newLetters[row][column].key != -1) {
-                    if (rains[column].age - row == rains[column].lettersSwitchTime) {
+                    if (rains[column].age - row == rains[column].lettersSwitchTime && tick % rains[column].speed == 0) {
                         newLetters[row][column].key = generateRandomLetter()
-                        newLetters[row][column].style = getNewLetterStyle()
+                        // newLetters[row][column].style = getNewLetterStyle()
                     }
                 }
             }
+        }
+        if (DEBUG_LETTERS) {
+            newLetters[0][0] = {key: '0', blueHighlightLeft: -1}
+            newLetters[0][1] = {key: '1', blueHighlightLeft: -1}
+            newLetters[0][2] = {key: '2', blueHighlightLeft: -1}
+            newLetters[0][3] = {key: '3', blueHighlightLeft: -1}
+            newLetters[0][4] = {key: '4', blueHighlightLeft: -1}
+            newLetters[0][5] = {key: '5', blueHighlightLeft: -1}
+            newLetters[0][6] = {key: '6', blueHighlightLeft: -1}
+            newLetters[0][7] = {key: '7', blueHighlightLeft: -1}
+            newLetters[0][8] = {key: '8', blueHighlightLeft: -1}
+            newLetters[0][9] = {key: '9', blueHighlightLeft: -1}
         }
         return newLetters
     }
@@ -330,12 +272,14 @@ function MatrixRainComponent(props: any) {
         let thisRainLifetime = getNextRainMaxAge();
         return {
             column,
-            age: Math.min(0, Math.round(generateBellCurveRandom(0, 5))),
+            age: Math.min(0, Math.round(generateBellCurveRandom(0, 10))),
             cleanupAge: 0,
             maxAge: thisRainLifetime,
             active: true,
             cleanup: false,
-            lettersSwitchTime: thisRainLifetime - Math.max(0,Math.floor(generateBellCurveRandom(10, 5)))
+            lettersSwitchTime: thisRainLifetime - Math.max(0,Math.floor(generateBellCurveRandom(10, 5))),
+            speed: getRainSpeed(),
+            lettersDimTime: generateBellCurveRandom(0.85, 0.06),
         }
     }
 
@@ -343,8 +287,7 @@ function MatrixRainComponent(props: any) {
     function generateSingleNewLetter(currentTick, row, maxAgeOfItsRain) {
         return {
             key: generateRandomLetter(),
-            blueHighlightMaxTick: currentTick + getBlueHighlightAge(),
-
+            blueHighlightLeft: getBlueHighlightAge(),
             style: getNewLetterStyle()
         }
     }
@@ -373,9 +316,9 @@ function MatrixRainComponent(props: any) {
     }
 
     function getFillRectangleStyle(letterStyle) {
-        if (letterStyle == 1) return "#002b02"
-        if (letterStyle == 2) return "#033305"
-        if (letterStyle == 3) return "#011c03"
+        if (letterStyle == 1) return "#001B0F"
+        if (letterStyle == 2) return "#002313"
+        if (letterStyle == 3) return "#000000"
         if (letterStyle == 4) return "#000600"
     }
 
@@ -391,7 +334,7 @@ function MatrixRainComponent(props: any) {
     }
 
     function getLetterFont() {
-        return "47px Courier"
+        return "24px Courier"
     }
 
     function drawLetter(letter, row, column) {
@@ -405,7 +348,7 @@ function MatrixRainComponent(props: any) {
         ctx.fillRect(boxCoords.x, boxCoords.y, boxCoords.width, boxCoords.height)
 
         // fill letter
-        ctx.fillStyle = getFillLetterStyle(letterStyle, tickCounter <= letter.blueHighlightMaxTick)
+        ctx.fillStyle = getFillLetterStyle(letterStyle, letter.blueHighlightLeft > 0)
         ctx.font = getLetterFont();
 
         const letterText = letter.key
@@ -413,10 +356,10 @@ function MatrixRainComponent(props: any) {
     }
 
     function getCoordsFromRowColumn(row, column) {
-        return {x: column*LETTER_WIDTH_PX-3, y: row*LETTER_HEIGHT_PX+31} ;
+        return {x: column*LETTER_WIDTH_PX-2, y: row*LETTER_HEIGHT_PX+15} ;
     }
     function getCoordsForBox(letterX, letterY) {
-        return {x: letterX+3, y: letterY-30, width: 22, height: 30}
+        return {x: letterX+1, y: letterY-15, width: LETTER_WIDTH_PX, height: LETTER_HEIGHT_PX}
     }
     function getColorForBox() {
         return "#1b2511"
@@ -435,37 +378,59 @@ function MatrixRainComponent(props: any) {
         }
     }
 
+    function getRainSpeed() {
+        // return 2 in 75% of cases
+        // return 1 in 10% of cases
+        // return 3 in 10% of cases
+        // return 4 in 5% of cases
+        let random = Math.random()
+        if (random < 0.05) {
+            return 4
+        } else if (random < 0.15) {
+            return 3
+        } else if (random < 0.25) {
+            return 1
+        } else {
+            return 2
+        }
+
+    }
+
     function getNewLetterStyle() {
-        // return 3 in 1% cases
-        // return 2 in 7% cases
+        // return 3 in 5% cases
+        // return 2 in 15% cases
         // in all other cases, return 1
         let random = Math.random()
-        if (random < 0.01) {
+        if (random < 0.05) {
             return 3
-        } else if (random < 0.08) {
+        } else if (random < 0.20) {
             return 2
         } else {
             return 1
         }
+
     }
 
-    function getChangedLetterStyle(currentStyle, ageOfRain, maxAgeOfRain) {
-        if (ageOfRain >= 0.99 * maxAgeOfRain) {
-            return 4;
-        }
-        if (currentStyle == 1) {
-            // in 75% of cases, stay the same, in 16% of cases change to 2, in 15% of cases change to 3
-            let random = Math.random()
-            if (random < 0.7) return 1
-            if (random < 0.91) return 2
-            return 3
-        } else {
-            // in 70% of cases, change to 1, in 30% of cases change to the one that is not 1 or current
-            let random = Math.random()
-            if (random < 0.7) return 1
-            if (currentStyle == 2) return 3
-            return 2
-        }
+    function getChangedLetterStyle(currentStyle, currentRow, ageOfRain, maxAgeOfRain, rainDimTime) {
+        // if ageOfRain - currentRow >= maxAgeOfRain * rainDimTime, return 4
+        if (ageOfRain - currentRow >= maxAgeOfRain * rainDimTime) return 4;
+
+        // change only in 20% of the time
+        if (Math.random() > 0.2) return currentStyle
+
+        // 1 should be chosen 85% of the time
+        // 2 should be chosen 5% of the time
+        // 3 should be chosen 5% of the time
+        // 4 should be chosen 3% of the time
+
+
+        let random = Math.random()
+        if (random < 0.03) return 4   
+        if (random < 0.08) return 3
+        if (random < 0.13) return 2
+        return 1
+        
+
     }
 
     function generateRandomLetterAndLocation(maxHeight, maxWidth) {
@@ -478,6 +443,7 @@ function MatrixRainComponent(props: any) {
 
     function generateRandomLetter() {
         // const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZｦｧｨｩｪｫｬｭｮｯｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾗﾘﾙﾚﾜﾝ010101010101010101010101010101012'
+        // const characters = 'ｦｧｨｩｪｫｬｭｮｯｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾗﾘﾙﾚﾜﾝ01233456789'
         const characters = '00000001111111ABCDEFGHIJKLMNOPQRSTUVWXYZ'
         return characters.charAt(Math.floor(Math.random() * characters.length))
     }
@@ -571,19 +537,22 @@ function MatrixRainComponent(props: any) {
         while (desiredWidth % 10 != 0) desiredWidth -=1
         while (desiredHeight % 10 != 0) desiredHeight -=1
         console.log(`devicePixelRatio: ${ratio}`)
-        canvas.width = desiredWidth;
-        canvas.height = desiredHeight;
+        // canvas.width = desiredWidth;
+        // canvas.height = desiredHeight;
+        canvas.width = canvasDrawingWidth;
+        canvas.height = canvasDrawingHeight;
         canvas.style.width = desiredWidth + "px";
         canvas.style.height = desiredHeight + "px";
         canvas.style.backgroundColor = 'black'
 
 
-        canvas.getContext('2d').scale(desiredWidth/canvasDrawingWidth, desiredHeight/canvasDrawingHeight)
+        // canvas.getContext('2d').scale(desiredWidth/canvasDrawingWidth, desiredHeight/canvasDrawingHeight)
         // will use this later to scale from desired 22*70 x 22x25 to actual screen dimensions
     }
     const canvas = <canvas 
         className={styles.canvas}
         ref={canvasRef}
+        id='matrix-canvas'
     ></canvas>
 
     function getNeoDotsText() {
@@ -600,7 +569,6 @@ function MatrixRainComponent(props: any) {
             <div id="niss"></div>
             <ReturnHomeCompoment/>
 
-            <div >{tickCounter}</div>
 
             <div className={styles.helloNeoCtnr}>
                 <div className={styles.neoDotsSpace}></div>
@@ -618,6 +586,7 @@ function MatrixRainComponent(props: any) {
                     <button onClick={() => helper3()}>tick+1</button>
                     <button onClick={() => helper4()}>clear cnvs</button>
                 </div> : ""}
+            <div >{tickCounter}</div>
             <button onClick={() => helper5()}>darkB</button>
         </div>
     )
