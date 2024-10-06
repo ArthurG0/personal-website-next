@@ -18,6 +18,7 @@ function MatrixRainComponent(props: any) {
     const [ROW_COUNT, setRowCount] = useState(null)
     const [COLUMN_COUNT, setColumnCount] = useState(null)
     const [isReady, setIsReady] = useState(false)
+    const [stateIsMobile, setIsMobile] = useState(false)
     const [letterState, setLetterState] = useState(null)
     const [desiredCapacity, setDesiredCapacity] = useState(0.7)
     const [tickCounter, setTickCounter] = useState(0)
@@ -28,11 +29,12 @@ function MatrixRainComponent(props: any) {
         console.log('useEffect called')
         if (isMobile()) {
             setColumnCount(20)
-            setRowCount(40)
+            setRowCount(30)
         } else {
             setColumnCount(70)
             setRowCount(25)
         }
+        setIsMobile(isMobile())
         setIsReady(true)
         
     }, [])
@@ -83,6 +85,7 @@ function MatrixRainComponent(props: any) {
         setLetterState(currentState => transformState(currentState, tick))
     }
     function getNewDesiredCapacity() {
+        if (stateIsMobile) return generateBellCurveRandom(0.75, 0.05)
         return generateBellCurveRandom(0.65, 0.05)
     }
     function generateBellCurveRandom(mean = 0, standardDeviation = 1) {
@@ -250,6 +253,7 @@ function MatrixRainComponent(props: any) {
                         newLetters[row][column].key = generateRandomLetter()
                         // newLetters[row][column].style = getNewLetterStyle()
                     }
+                    if (Math.random() < 0.005) newLetters[row][column].key = generateRandomLetter()
                 }
             }
         }
@@ -572,8 +576,8 @@ function MatrixRainComponent(props: any) {
 
             <div className={styles.helloNeoCtnr}>
                 <div className={styles.neoDotsSpace}></div>
-                <h2 className={styles.helloNeoTxt} onClick={() => drawRandomLetter()}>Hello Neo</h2>
-                <h2 className={styles.neoDots}>{getNeoDotsText()}</h2>
+                <div className={styles.helloNeoTxt} onClick={() => drawRandomLetter()}>Hello Neo</div>
+                <div className={styles.neoDots}>{getNeoDotsText()}</div>
             </div>
             <div id="cnvs-ctr" className={styles.canvasContainer}>
                 {canvas}
