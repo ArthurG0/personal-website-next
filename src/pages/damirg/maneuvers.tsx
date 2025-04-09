@@ -13,13 +13,19 @@ export default function ManeuversComponent() {
     const [selectedRadios, setSelectedRadios] = useState({
         barrel_roll: false,
         roll: false,
-        cobra: false
+        cobra: false,
+        instrument_1: false,
+        instrument_2: false,
+        instrument_3: false,
     })
 
     const radioIdToReadableManeuver: Record<string, string> = {
         'barrel_roll': 'Barrel Roll',
         'roll': 'Roll',
         'cobra': 'Cobra Maneuver',
+        'instrument_1': 'Instrument Maneuver 1',
+        'instrument_2': 'Instrument Maneuver 2',
+        'instrument_3': 'Instrument Maneuver 3',
     }
 
     useEffect(() => {
@@ -106,8 +112,8 @@ export default function ManeuversComponent() {
 
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
             <Tabs value={selectedTab} onChange={handleChange} aria-label="basic tabs example">
-                <Tab label="Private Pilot" {...a11yProps(0)} />
-                <Tab disabled label="Other Modes" {...a11yProps(1)} />
+                <Tab label="VFR Maneuvers" {...a11yProps(0)} />
+                <Tab label="Instrument Maneuvers" {...a11yProps(1)} />
             </Tabs>
             </Box>
             <CustomTabPanel value={selectedTab} index={0}>
@@ -136,7 +142,28 @@ export default function ManeuversComponent() {
             </CustomTabPanel>
 
             <CustomTabPanel value={selectedTab} index={1}>
-            Item Two
+            <FormGroup className={styles.FormGroup}>
+                    <FormControlLabel
+                        control={
+                        <Checkbox checked={selectedRadios.instrument_1} onChange={handleCheckboxChange} name="instrument_1" />
+                        }
+                        label={radioIdToReadableManeuver['instrument_1']}
+
+                    />
+                    <FormControlLabel
+                        control={
+                        <Checkbox checked={selectedRadios.instrument_2} onChange={handleCheckboxChange} name="instrument_2" />
+                        }
+                        label={radioIdToReadableManeuver['instrument_2']}
+
+                    />
+                    <FormControlLabel
+                        control={
+                        <Checkbox checked={selectedRadios.instrument_3} onChange={handleCheckboxChange} name="instrument_3" />
+                        }
+                        label={radioIdToReadableManeuver['instrument_3']}
+                    />
+                </FormGroup>
             </CustomTabPanel>
             
             <textarea className={styles.FinalTextBox} id="copyBox" rows={5} cols={100} readOnly value={finalText}></textarea>
