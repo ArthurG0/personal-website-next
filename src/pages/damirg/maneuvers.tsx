@@ -142,7 +142,7 @@ export default function ManeuversComponent() {
             <textarea className={styles.FinalTextBox} id="copyBox" rows={5} cols={100} readOnly value={finalText}></textarea>
             <input className={styles.CopyButton} type="button" value="Copy text" onClick={copyText}/>
             <ToastContainer/>
-            <div id={styles.FooterMsg}>From Arthur for Dad</div>
+            <div id={styles.FooterMsg}>Made by Arthur for Dad</div>
 
         </div>
         
