@@ -9,7 +9,15 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function ManeuversComponent() {
 
     interface OptionCodes {
-
+        barrel_roll: boolean,
+        roll: boolean,
+        cobra: boolean,
+        instrument_1: boolean,
+        instrument_2: boolean,
+        instrument_3: boolean,
+        instrument_4: boolean,
+        instrument_5: boolean,
+        instrument_6: boolean,
     }
 
     const [selectedTab, setSelectedTab] = useState(0)
@@ -108,7 +116,7 @@ export default function ManeuversComponent() {
         });
     }
 
-    let sxProperty = null
+    let sxProperty = {}
     if (isMobile) {
         sxProperty = {'.MuiTypography-root': {fontSize: '0.9rem'}}
     }
