@@ -1,6 +1,6 @@
 .ManeuversMain {
     text-align: center;
-    margin: 5vw 5vh;
+    margin: 5vw 5vw;
 }
 
 .ManeuversMain > div {
@@ -36,10 +36,11 @@
 
 .FormGroup {
     display: block;
+    padding: 0;
 }
 
 .CopyButton {
-    background-color: #04AA6D;
+    background-color: #1976d2;
     border: none;
     color: white;
     padding: 16px 32px;
@@ -55,4 +56,19 @@
     right: 5vw;
     position: absolute;
     font-family: "Courier New", Courier, monospace;
+    font-size: 0.8rem;
+}
+
+/* For Desktop */
+@media only screen and (min-aspect-ratio: 3/4) {
+    .MuiTypography-root {
+        font-size: 0.7rem;
+    }
+}
+
+/* For Mobile */
+@media only screen and (max-aspect-ratio: 3/4) {
+    .MuiTypography-root {
+        font-size: 0.8rem;
+    }
 }
