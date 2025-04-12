@@ -1,6 +1,6 @@
 .ManeuversMain {
     text-align: center;
-    margin: 5vw 5vw;
+    margin: 2vh 2vw;
 }
 
 .ManeuversMain > div {
@@ -52,10 +52,8 @@
 
 #FooterMsg {
     z-index: 2;
-    bottom: 2vh;
-    right: 5vw;
-    position: absolute;
     font-family: "Courier New", Courier, monospace;
+    text-align: right;
     font-size: 0.8rem;
 }
 
