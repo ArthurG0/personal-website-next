@@ -389,7 +389,7 @@ export default function ManeuversComponent() {
     if (isMobile) {
         formControlLabelSxProperty = {
             '.MuiTypography-root': { fontSize: '1rem' },
-            '.MuiButtonBase-root': { padding: '5px' }
+            '.MuiButtonBase-root': { padding: '6px' }
         }
         checkboxBoxSxProperty = {
             ...checkboxBoxSxProperty,
