@@ -1,3 +1,5 @@
+@import 'globaldefs';
+
 .ManeuversMain {
     text-align: center;
     margin: 2vh 2vw;
@@ -5,6 +7,10 @@
 
 .ManeuversMain > div {
     margin: 2vh auto;
+}
+
+.ManeuversMain > .FloatingMobileFooterBox {
+    margin: auto;
 }
 
 .FinalTextBox {
@@ -22,7 +28,6 @@
     resize: vertical;
     font-size: 1rem;
     display: block;
-    
 }
 
 .FinalTextBox:focus {
@@ -54,7 +59,39 @@
     z-index: 2;
     font-family: "Courier New", Courier, monospace;
     text-align: right;
+    width: 100%;
+    padding: 2vh 0 0 0;
     font-size: 0.8rem;
+}
+
+.FloatingMobileFooterBox {
+    width: 99%;
+    height: 20vh;
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    color: black;
+    background-color: $background-color;
+    border-top: 2px solid gray;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
+
+.FloatingMobileFooterBox > #FooterMsg {
+    width: 100%;
+}
+
+.FloatingMobileFooterBox > .FinalTextBox {
+    width: 70vw;
+}
+
+.FloatingMobileFooterBox > .CopyButton {
+    margin: auto;
+    height: 5vh;
+    padding: 12px;
 }
 
 /* For Desktop */

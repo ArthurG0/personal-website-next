@@ -100,6 +100,7 @@ export default function ManeuversComponent() {
     }
 
     const [selectedTab, setSelectedTab] = useState(0)
+    const [isMobile, setIsMobile] = useState(false);
     const [finalText, setFinalText] = useState("Here are my maneuvers: A, B, C")
     const [selectedRadios, setSelectedRadios] = useState<OptionCodes>({
         barrel_roll: false,
@@ -191,7 +192,6 @@ export default function ManeuversComponent() {
         m_78: false,
         m_79: false,
     })
-    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
         // Function to check if the device is mobile
@@ -283,7 +283,7 @@ export default function ManeuversComponent() {
         'm_53': 'Night TO&LDG',
 
         // Emergency Procedures
-        'm_54': 'Emergency Approaches and Landings (Simulated)',
+        'm_54': 'Emergency Approaches and Landings',
         'm_55': 'Engine Failure After Takeoff',
         'm_56': 'Emergency Descents',
         'm_57': 'In-Flight Fire',
@@ -338,9 +338,8 @@ export default function ManeuversComponent() {
                 if (value) selectedManeuvers.push(radioIdToReadableManeuver[key])
             }
 
-            if (selectedManeuvers.length === 0) return "No maneuvers were performed"
-            if (selectedManeuvers.length === 1) return `Performed a ${selectedManeuvers[0]}`
-            else return `Performed the following maneuvers: ${selectedManeuvers.join(', ')}`
+            if (selectedManeuvers.length === 0) return "Select maneuvers to continue."
+            else return `${selectedManeuvers.join(', ')}`
 
         })
 
@@ -381,20 +380,22 @@ export default function ManeuversComponent() {
         });
     }
 
-    let formControlLabelSxProperty: Record<string, any> = {}
+    let formControlLabelSxProperty: Record<string, any> = {
+        '.MuiButtonBase-root': { padding: '6px' }
+    }
     let formLabelSxProperty : Record<string, any> = { fontWeight: 'bold' }
-    let formControlSxProperty: Record<string, any> = { paddingBottom: '15px', minWidth: '20%' }
-    let checkboxBoxSxProperty: Record<string, any> = {textAlign: 'left', display: 'flex', gap: '10px', flexWrap: 'wrap',}
+    let formControlSxProperty: Record<string, any> = { minWidth: '20%' }
+    let checkboxBoxSxProperty: Record<string, any> = {textAlign: 'left', display: 'flex', gap: '30px 30px', flexWrap: 'wrap' }
     if (isMobile) {
         formControlLabelSxProperty = {
             '.MuiTypography-root': { fontSize: '1rem' },
-            '.MuiButtonBase-root': { padding: '9px' }
+            '.MuiButtonBase-root': { padding: '4px' }
         }
         checkboxBoxSxProperty = {
             ...checkboxBoxSxProperty,
             display: 'flex',
             flexWrap: 'wrap',
-            gap: '10px'
+            gap: '15px 20px'
         }
         formControlSxProperty = {
             ...formControlSxProperty,
@@ -406,8 +407,11 @@ export default function ManeuversComponent() {
     function CustomTabPanel(props: any) {
         const { children, value, index, ...other } = props;
 
-        let paddingValue = 3
-        if (isMobile) paddingValue = 1
+        let paddingValue = '3vh 3vw'
+        if (isMobile){ 
+            paddingValue = '1vh 1vw 20vh 1vw'
+        }
+        let boxSx = { p: paddingValue }
       
         return (
           <div
@@ -417,7 +421,7 @@ export default function ManeuversComponent() {
             aria-labelledby={`simple-tab-${index}`}
             {...other}
           >
-            {value === index && <Box sx={{ p: paddingValue, overflowX: 'scroll' }}>{children}</Box>}
+            {value === index && <Box sx={boxSx}>{children}</Box>}
           </div>
         );
     }
@@ -427,6 +431,22 @@ export default function ManeuversComponent() {
           id: `simple-tab-${index}`,
           'aria-controls': `simple-tabpanel-${index}`,
         };
+    }
+
+    let textAndCopyTextFooterCompoment = (
+        <>
+            <textarea className={styles.FinalTextBox} id="copyBox" rows={5} cols={100} readOnly value={finalText}></textarea>
+            <input className={styles.CopyButton} type="button" value="Copy text" onClick={copyText}/>
+        </>
+    )
+
+    if (isMobile) {
+        textAndCopyTextFooterCompoment = (
+        <div className={styles.FloatingMobileFooterBox}>
+            <textarea className={styles.FinalTextBox} id="copyBox" rows={5} cols={100} readOnly value={finalText}></textarea>
+            <input className={styles.CopyButton} type="button" value="Copy text" onClick={copyText}/>
+        </div>
+        )
     }
 
     return (
@@ -646,6 +666,8 @@ export default function ManeuversComponent() {
                         }
                     </FormGroup>
                 </FormControl>
+                <div id={styles.FooterMsg}>Made by Arthur for Dad</div>
+
             </Box>
             </CustomTabPanel>
 
@@ -690,13 +712,13 @@ export default function ManeuversComponent() {
                             }
                         </FormGroup>
                     </FormControl>
+                    <div id={styles.FooterMsg}>Made by Arthur for Dad</div>
+
                 </Box>
             </CustomTabPanel>
-            
-            <textarea className={styles.FinalTextBox} id="copyBox" rows={5} cols={100} readOnly value={finalText}></textarea>
-            <input className={styles.CopyButton} type="button" value="Copy text" onClick={copyText}/>
             <ToastContainer/>
-            <div id={styles.FooterMsg}>Made by Arthur for Dad</div>
+            
+            { textAndCopyTextFooterCompoment }
 
         </div>
         
