@@ -409,7 +409,7 @@ export default function ManeuversComponent() {
 
         let paddingValue = '3vh 3vw'
         if (isMobile){ 
-            paddingValue = '1vh 1vw 20vh 1vw'
+            paddingValue = '8px 8px 20vh 8px'
         }
         let boxSx = { p: paddingValue }
       
