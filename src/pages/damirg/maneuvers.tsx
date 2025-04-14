@@ -1,6 +1,6 @@
 import { SyntheticEvent, useEffect, useState } from 'react';
 import styles from '../../styles/Maneuvers.module.scss'
-import { Box, Tabs, Tab, FormControlLabel, Checkbox, FormGroup, FormLabel, FormControl } from '@mui/material'
+import { Box, Tabs, Tab, FormControlLabel, Checkbox, FormGroup, FormLabel, FormControl, Button } from '@mui/material'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -436,7 +436,7 @@ export default function ManeuversComponent() {
     let textAndCopyTextFooterCompoment = (
         <>
             <textarea className={styles.FinalTextBox} id="copyBox" rows={5} cols={100} readOnly value={finalText}></textarea>
-            <input className={styles.CopyButton} type="button" value="Copy text" onClick={copyText}/>
+            <Button className={ styles.CopyButton } variant="contained" onClick={copyText}>Copy text</Button>
         </>
     )
 
@@ -444,7 +444,7 @@ export default function ManeuversComponent() {
         textAndCopyTextFooterCompoment = (
         <div className={styles.FloatingMobileFooterBox}>
             <textarea className={styles.FinalTextBox} id="copyBox" rows={5} cols={100} readOnly value={finalText}></textarea>
-            <input className={styles.CopyButton} type="button" value="Copy text" onClick={copyText}/>
+            <Button className={ styles.CopyButton } variant="contained" onClick={copyText}>Copy text</Button>
         </div>
         )
     }
