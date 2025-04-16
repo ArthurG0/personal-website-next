@@ -101,6 +101,8 @@ export default function ManeuversComponent() {
 
     const [selectedTab, setSelectedTab] = useState(0)
     const [isMobile, setIsMobile] = useState(false);
+    const [isPhoneSize, setIsPhoneSize] = useState(false);
+    const [screenWidth, setScreenWidth] = useState(1024);
     const [finalText, setFinalText] = useState("Here are my maneuvers: A, B, C")
     const [selectedRadios, setSelectedRadios] = useState<OptionCodes>({
         barrel_roll: false,
@@ -196,8 +198,11 @@ export default function ManeuversComponent() {
     useEffect(() => {
         // Function to check if the device is mobile
         const checkIfMobile = () => {
-        const width = window.innerWidth;
-        setIsMobile(width < 770); // You can adjust this threshold as needed
+            const width = window.innerWidth;
+            setIsMobile(width < 770); // You can adjust this threshold as needed
+            setIsPhoneSize(width < 600);
+            setScreenWidth(width);
+            
         };
 
         // Add event listener for window resize
@@ -380,26 +385,47 @@ export default function ManeuversComponent() {
         });
     }
 
+    // how many columns you need.
+    let columnsProperty = '4 19vw';
+    let columnGapProperty = '4vw';
+    if(screenWidth < 1200) {
+        columnsProperty = '3 25vw'
+    }
+    if(screenWidth < 900) {
+        columnsProperty = '2 40vw'
+        columnGapProperty = '5vw'
+    }
+    if(screenWidth < 600) {
+        columnsProperty = '1'
+        columnGapProperty = ''
+    }
+
     let formControlLabelSxProperty: Record<string, any> = {
         '.MuiButtonBase-root': { padding: '6px' }
     }
-    let formLabelSxProperty : Record<string, any> = { fontWeight: 'bold' }
-    let formControlSxProperty: Record<string, any> = { minWidth: '20%' }
-    let checkboxBoxSxProperty: Record<string, any> = {textAlign: 'left', display: 'flex', gap: '30px 30px', flexWrap: 'wrap' }
+    let formLabelSxProperty : Record<string, any> = { fontWeight: 'bold', textDecoration: 'underline 2px' }
+    let groupContainerSxProperty: Record<string, any> = {
+        minWidth: '51%',
+        margin: '0 0 1.5vh 0'
+    }
+    let checkboxBoxSxProperty: Record<string, any> = {
+        textAlign: 'left',
+        columns: columnsProperty,
+        columnGap: columnGapProperty,
+        // display: 'flex',
+        // gap: '30px 30px', 
+        // flexWrap: 'wrap'
+    }
+
     if (isMobile) {
         formControlLabelSxProperty = {
             '.MuiTypography-root': { fontSize: '1rem' },
-            '.MuiButtonBase-root': { padding: '5px' }
+            '.MuiButtonBase-root': { padding: '5px 5px 5px 8px' }
         }
-        checkboxBoxSxProperty = {
-            ...checkboxBoxSxProperty,
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '15px 20px'
-        }
-        formControlSxProperty = {
-            ...formControlSxProperty,
-            minWidth: '40%',
+        groupContainerSxProperty = {
+            ...groupContainerSxProperty,
+            minWidth: '51%',
+            margin: '0 0 1.5vh 0',
         }
     }
 
@@ -464,9 +490,9 @@ export default function ManeuversComponent() {
             </Box>
             <CustomTabPanel value={selectedTab} index={0}>
             <Box sx={checkboxBoxSxProperty}>
-                <FormControl sx={formControlSxProperty}>
+                <FormControl sx={groupContainerSxProperty}>
                 <FormLabel sx={formLabelSxProperty} component="legend">Ground Operations</FormLabel>
-                    <FormGroup sx={formControlSxProperty}>
+                    <FormGroup>
                         {
                             ['m_1', 'm_2', 'm_3', 'm_4', 'm_5', 'm_6', 'm_7'].map((option_code, index) => {
                                 return (
@@ -487,7 +513,7 @@ export default function ManeuversComponent() {
                     </FormGroup>
                 </FormControl>
 
-                <FormControl sx={formControlSxProperty}>
+                <FormControl sx={groupContainerSxProperty}>
                 <FormLabel sx={formLabelSxProperty} component="legend">Basic Flight Maneuvers</FormLabel>
                     <FormGroup>
                         {
@@ -507,7 +533,7 @@ export default function ManeuversComponent() {
                     </FormGroup>
                 </FormControl>
 
-                <FormControl sx={formControlSxProperty}>
+                <FormControl sx={groupContainerSxProperty}>
                 <FormLabel sx={formLabelSxProperty} component="legend">Ground Reference Maneuvers</FormLabel>
                     <FormGroup>
                         {
@@ -527,8 +553,8 @@ export default function ManeuversComponent() {
                     </FormGroup>
                 </FormControl>
 
-                <FormControl sx={formControlSxProperty}>
-                <FormLabel sx={{fontWeight: 'bold'}} component="legend">Airport Operations</FormLabel>
+                <FormControl sx={groupContainerSxProperty}>
+                <FormLabel sx={formLabelSxProperty} component="legend">Airport Operations</FormLabel>
                     <FormGroup>
                         {
                             ['m_8', 'm_9', 'm_10'].map((option_code, index) => {
@@ -547,7 +573,7 @@ export default function ManeuversComponent() {
                     </FormGroup>
                 </FormControl>
 
-                <FormControl sx={formControlSxProperty}>
+                <FormControl sx={groupContainerSxProperty}>
                 <FormLabel sx={formLabelSxProperty} component="legend">Takeoffs and Landings</FormLabel>
                     <FormGroup>
                         {
@@ -567,7 +593,7 @@ export default function ManeuversComponent() {
                     </FormGroup>
                 </FormControl>
 
-                <FormControl sx={formControlSxProperty}>
+                <FormControl sx={groupContainerSxProperty}>
                 <FormLabel sx={formLabelSxProperty} component="legend">Upset Prevention and Recovery Training</FormLabel>
                     <FormGroup>
                         {
@@ -587,7 +613,7 @@ export default function ManeuversComponent() {
                     </FormGroup>
                 </FormControl>
 
-                <FormControl sx={formControlSxProperty}>
+                <FormControl sx={groupContainerSxProperty}>
                 <FormLabel sx={formLabelSxProperty} component="legend">Performance Maneuvers</FormLabel>
                     <FormGroup>
                         {
@@ -607,7 +633,7 @@ export default function ManeuversComponent() {
                     </FormGroup>
                 </FormControl>
 
-                <FormControl sx={formControlSxProperty}>
+                <FormControl sx={groupContainerSxProperty}>
                 <FormLabel sx={formLabelSxProperty} component="legend">Night Operations</FormLabel>
                     <FormGroup>
                         {
@@ -627,7 +653,7 @@ export default function ManeuversComponent() {
                     </FormGroup>
                 </FormControl>
 
-                <FormControl sx={formControlSxProperty}>
+                <FormControl sx={groupContainerSxProperty}>
                 <FormLabel sx={formLabelSxProperty} component="legend">Navigation</FormLabel>
                     <FormGroup>
                         {
@@ -647,7 +673,7 @@ export default function ManeuversComponent() {
                     </FormGroup>
                 </FormControl>
 
-                <FormControl sx={formControlSxProperty}>
+                <FormControl sx={groupContainerSxProperty}>
                 <FormLabel sx={formLabelSxProperty} component="legend">Emergency Procedures</FormLabel>
                     <FormGroup>
                         {
@@ -673,7 +699,7 @@ export default function ManeuversComponent() {
 
             <CustomTabPanel value={selectedTab} index={1}>
                 <Box sx={checkboxBoxSxProperty}>
-                    <FormControl sx={formControlSxProperty}>
+                    <FormControl sx={groupContainerSxProperty}>
                     <FormLabel sx={formLabelSxProperty} component="legend">Transition to Complex Airplanes</FormLabel>
                         <FormGroup>
                             {
@@ -693,7 +719,7 @@ export default function ManeuversComponent() {
                         </FormGroup>
                     </FormControl>
 
-                    <FormControl sx={formControlSxProperty}>
+                    <FormControl sx={groupContainerSxProperty}>
                     <FormLabel sx={formLabelSxProperty} component="legend">Transition to Multiengine Airplanes</FormLabel>
                         <FormGroup>
                             {
