@@ -420,6 +420,7 @@ export default function ManeuversComponent() {
 
     if (isMobile) {
         formControlLabelSxProperty = {
+            marginLeft: '-8px',
             '.MuiTypography-root': { fontSize: '1rem' },
             '.MuiButtonBase-root': { padding: '5px 5px 5px 8px' }
         }
