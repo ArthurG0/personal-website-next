@@ -100,9 +100,9 @@ export default function ManeuversComponent() {
     }
 
     const [selectedTab, setSelectedTab] = useState(0)
-    const [isMobile, setIsMobile] = useState(false);
+    const [isMobile, setIsMobile] = useState(true);
     const [isPhoneSize, setIsPhoneSize] = useState(false);
-    const [screenWidth, setScreenWidth] = useState(1024);
+    const [screenWidth, setScreenWidth] = useState(768);
     const [finalText, setFinalText] = useState("Here are my maneuvers: A, B, C")
     const [selectedRadios, setSelectedRadios] = useState<OptionCodes>({
         barrel_roll: false,
@@ -401,9 +401,10 @@ export default function ManeuversComponent() {
     }
 
     let formControlLabelSxProperty: Record<string, any> = {
+        marginLeft: '-8px',
         '.MuiButtonBase-root': { padding: '6px' }
     }
-    let formLabelSxProperty : Record<string, any> = { fontWeight: 'bold', textDecoration: 'underline 2px' }
+    let formLabelSxProperty : Record<string, any> = { fontWeight: 'bold', textDecoration: 'underline', textDecorationThickness: '2px' }
     let groupContainerSxProperty: Record<string, any> = {
         minWidth: '51%',
         margin: '0 0 1.5vh 0'
@@ -514,46 +515,6 @@ export default function ManeuversComponent() {
                 </FormControl>
 
                 <FormControl sx={groupContainerSxProperty}>
-                <FormLabel sx={formLabelSxProperty} component="legend">Basic Flight Maneuvers</FormLabel>
-                    <FormGroup>
-                        {
-                            ['m_11', 'm_12', 'm_13', 'm_14', 'm_15', 'm_16', 'm_17', 'm_18'].map((option_code, index) => {
-                                return (
-                                    <FormControlLabel 
-                                        control={
-                                            <Checkbox checked={selectedRadios[option_code as keyof OptionCodes]} onChange={handleCheckboxChange} name={option_code} />
-                                        }
-                                        label={radioIdToReadableManeuver[option_code]}
-                                        sx={formControlLabelSxProperty}
-                                        key={`basic-flight-${index}`}
-
-                                    /> )
-                            })
-                        }
-                    </FormGroup>
-                </FormControl>
-
-                <FormControl sx={groupContainerSxProperty}>
-                <FormLabel sx={formLabelSxProperty} component="legend">Ground Reference Maneuvers</FormLabel>
-                    <FormGroup>
-                        {
-                            ['m_38', 'm_39', 'm_40', 'm_41'].map((option_code, index) => {
-                                return (
-                                    <FormControlLabel 
-                                        control={
-                                            <Checkbox checked={selectedRadios[option_code as keyof OptionCodes]} onChange={handleCheckboxChange} name={option_code} />
-                                        }
-                                        label={radioIdToReadableManeuver[option_code]}
-                                        sx={formControlLabelSxProperty}
-                                        key={`ground-ref-${index}`}
-
-                                    /> )
-                            })
-                        }
-                    </FormGroup>
-                </FormControl>
-
-                <FormControl sx={groupContainerSxProperty}>
                 <FormLabel sx={formLabelSxProperty} component="legend">Airport Operations</FormLabel>
                     <FormGroup>
                         {
@@ -574,10 +535,10 @@ export default function ManeuversComponent() {
                 </FormControl>
 
                 <FormControl sx={groupContainerSxProperty}>
-                <FormLabel sx={formLabelSxProperty} component="legend">Takeoffs and Landings</FormLabel>
+                <FormLabel sx={formLabelSxProperty} component="legend">Basic Flight Maneuvers</FormLabel>
                     <FormGroup>
                         {
-                            ['m_28', 'm_29', 'm_30', 'm_31', 'm_32', 'm_33', 'm_34', 'm_35', 'm_36', 'm_37'].map((option_code, index) => {
+                            ['m_11', 'm_12', 'm_13', 'm_14', 'm_15', 'm_16', 'm_17', 'm_18'].map((option_code, index) => {
                                 return (
                                     <FormControlLabel 
                                         control={
@@ -585,7 +546,7 @@ export default function ManeuversComponent() {
                                         }
                                         label={radioIdToReadableManeuver[option_code]}
                                         sx={formControlLabelSxProperty}
-                                        key={`takeoffs-${index}`}
+                                        key={`basic-flight-${index}`}
 
                                     /> )
                             })
@@ -614,6 +575,46 @@ export default function ManeuversComponent() {
                 </FormControl>
 
                 <FormControl sx={groupContainerSxProperty}>
+                <FormLabel sx={formLabelSxProperty} component="legend">Takeoffs and Landings</FormLabel>
+                    <FormGroup>
+                        {
+                            ['m_28', 'm_29', 'm_30', 'm_31', 'm_32', 'm_33', 'm_34', 'm_35', 'm_36', 'm_37'].map((option_code, index) => {
+                                return (
+                                    <FormControlLabel 
+                                        control={
+                                            <Checkbox checked={selectedRadios[option_code as keyof OptionCodes]} onChange={handleCheckboxChange} name={option_code} />
+                                        }
+                                        label={radioIdToReadableManeuver[option_code]}
+                                        sx={formControlLabelSxProperty}
+                                        key={`takeoffs-${index}`}
+
+                                    /> )
+                            })
+                        }
+                    </FormGroup>
+                </FormControl>
+
+                <FormControl sx={groupContainerSxProperty}>
+                <FormLabel sx={formLabelSxProperty} component="legend">Ground Reference Maneuvers</FormLabel>
+                    <FormGroup>
+                        {
+                            ['m_38', 'm_39', 'm_40', 'm_41'].map((option_code, index) => {
+                                return (
+                                    <FormControlLabel 
+                                        control={
+                                            <Checkbox checked={selectedRadios[option_code as keyof OptionCodes]} onChange={handleCheckboxChange} name={option_code} />
+                                        }
+                                        label={radioIdToReadableManeuver[option_code]}
+                                        sx={formControlLabelSxProperty}
+                                        key={`ground-ref-${index}`}
+
+                                    /> )
+                            })
+                        }
+                    </FormGroup>
+                </FormControl>
+
+                <FormControl sx={groupContainerSxProperty}>
                 <FormLabel sx={formLabelSxProperty} component="legend">Performance Maneuvers</FormLabel>
                     <FormGroup>
                         {
@@ -626,26 +627,6 @@ export default function ManeuversComponent() {
                                         label={radioIdToReadableManeuver[option_code]}
                                         sx={formControlLabelSxProperty}
                                         key={`perf-${index}`}
-
-                                    /> )
-                            })
-                        }
-                    </FormGroup>
-                </FormControl>
-
-                <FormControl sx={groupContainerSxProperty}>
-                <FormLabel sx={formLabelSxProperty} component="legend">Night Operations</FormLabel>
-                    <FormGroup>
-                        {
-                            ['m_52', 'm_53'].map((option_code, index) => {
-                                return (
-                                    <FormControlLabel 
-                                        control={
-                                            <Checkbox checked={selectedRadios[option_code as keyof OptionCodes]} onChange={handleCheckboxChange} name={option_code} />
-                                        }
-                                        label={radioIdToReadableManeuver[option_code]}
-                                        sx={formControlLabelSxProperty}
-                                        key={`night-${index}`}
 
                                     /> )
                             })
@@ -674,6 +655,26 @@ export default function ManeuversComponent() {
                 </FormControl>
 
                 <FormControl sx={groupContainerSxProperty}>
+                <FormLabel sx={formLabelSxProperty} component="legend">Night Operations</FormLabel>
+                    <FormGroup>
+                        {
+                            ['m_52', 'm_53'].map((option_code, index) => {
+                                return (
+                                    <FormControlLabel 
+                                        control={
+                                            <Checkbox checked={selectedRadios[option_code as keyof OptionCodes]} onChange={handleCheckboxChange} name={option_code} />
+                                        }
+                                        label={radioIdToReadableManeuver[option_code]}
+                                        sx={formControlLabelSxProperty}
+                                        key={`night-${index}`}
+
+                                    /> )
+                            })
+                        }
+                    </FormGroup>
+                </FormControl>
+
+                <FormControl sx={groupContainerSxProperty}>
                 <FormLabel sx={formLabelSxProperty} component="legend">Emergency Procedures</FormLabel>
                     <FormGroup>
                         {
@@ -692,10 +693,11 @@ export default function ManeuversComponent() {
                         }
                     </FormGroup>
                 </FormControl>
-                <div id={styles.FooterMsg}>Made by Arthur for Dad</div>
-
             </Box>
+            <div id={styles.FooterMsg}>Made by Arthur for Dad</div>
+
             </CustomTabPanel>
+
 
             <CustomTabPanel value={selectedTab} index={1}>
                 <Box sx={checkboxBoxSxProperty}>
@@ -738,9 +740,8 @@ export default function ManeuversComponent() {
                             }
                         </FormGroup>
                     </FormControl>
-                    <div id={styles.FooterMsg}>Made by Arthur for Dad</div>
-
                 </Box>
+                <div id={styles.FooterMsg}>Made by Arthur for Dad</div>
             </CustomTabPanel>
             <ToastContainer/>
             
