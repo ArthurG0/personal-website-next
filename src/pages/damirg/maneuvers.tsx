@@ -436,15 +436,15 @@ export default function ManeuversComponent() {
     let textAndCopyTextFooterCompoment = (
         <>
             <textarea className={styles.FinalTextBox} id="copyBox" rows={5} cols={100} readOnly value={finalText}></textarea>
-            <Button className={ styles.CopyButton } variant="contained" onClick={copyText}>Copy text</Button>
+            <Button className={styles.CopyButton} variant="contained" onClick={copyText}>Copy text</Button>
         </>
     )
 
     if (isMobile) {
         textAndCopyTextFooterCompoment = (
         <div className={styles.FloatingMobileFooterBox}>
-            <textarea className={styles.FinalTextBox} id="copyBox" rows={5} cols={100} readOnly value={finalText}></textarea>
-            <Button className={ styles.CopyButton } variant="contained" onClick={copyText}>Copy text</Button>
+            <textarea className={styles.FinalTextBox} id="copyBox" rows={4} cols={100} readOnly value={finalText}></textarea>
+            <Button className={styles.CopyButton} variant="contained" onClick={copyText}>Copy text</Button>
         </div>
         )
     }
