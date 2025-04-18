@@ -267,7 +267,7 @@ export default function ManeuversComponent() {
         'm_38': 'Rectangular Course',
         'm_39': 'Turns Around a Point',
         'm_40': 'S-Turns',
-        'm_41': 'Eights-on-Pylons 7-14',
+        'm_41': 'Eights-on-Pylons',
 
         // Performance Maneuvers
         'm_42': 'Steep turns',
