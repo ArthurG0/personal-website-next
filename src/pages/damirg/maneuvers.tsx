@@ -97,6 +97,8 @@ export default function ManeuversComponent() {
         m_77: boolean,
         m_78: boolean,
         m_79: boolean,
+        m_80: boolean,
+        m_81: boolean
     }
 
     const [selectedTab, setSelectedTab] = useState(0)
@@ -114,6 +116,8 @@ export default function ManeuversComponent() {
         instrument_4: false,
         instrument_5: false,
         instrument_6: false,
+
+        // Ground
         m_1: false,
         m_2: false,
         m_3: false,
@@ -121,9 +125,11 @@ export default function ManeuversComponent() {
         m_5: false,
         m_6: false,
         m_7: false,
+
         m_8: false,
         m_9: false,
         m_10: false,
+
         m_11: false,
         m_12: false,
         m_13: false,
@@ -132,6 +138,7 @@ export default function ManeuversComponent() {
         m_16: false,
         m_17: false,
         m_18: false,
+        
         m_19: false,
         m_20: false,
         m_21: false,
@@ -141,6 +148,7 @@ export default function ManeuversComponent() {
         m_25: false,
         m_26: false,
         m_27: false,
+
         m_28: false,
         m_29: false,
         m_30: false,
@@ -151,24 +159,31 @@ export default function ManeuversComponent() {
         m_35: false,
         m_36: false,
         m_37: false,
+
         m_38: false,
         m_39: false,
         m_40: false,
         m_41: false,
+
         m_42: false,
         m_43: false,
         m_44: false,
         m_45: false,
+
         m_46: false,
         m_47: false,
         m_48: false,
         m_49: false,
         m_50: false,
         m_51: false,
+        m_81: false,
+
         m_52: false,
         m_53: false,
+
         m_54: false,
         m_55: false,
+        m_80: false,
         m_56: false,
         m_57: false,
         m_58: false,
@@ -183,9 +198,11 @@ export default function ManeuversComponent() {
         m_67: false,
         m_68: false,
         m_69: false,
+
         m_70: false,
         m_71: false,
         m_72: false,
+
         m_73: false,
         m_74: false,
         m_75: false,
@@ -318,6 +335,14 @@ export default function ManeuversComponent() {
         'm_77': 'Single Engine Operation',
         'm_78': 'Vmc Demo',
         'm_79': 'Engine Inoperative Approach and Landing',
+
+        // Later additions
+        
+        // Emergency Procedure #3
+        'm_80': 'Engine Failure',
+
+        // Navigation Last
+        'm_81': 'Lost Procedures',
 
 
 
@@ -639,7 +664,7 @@ export default function ManeuversComponent() {
                 <FormLabel sx={formLabelSxProperty} component="legend">Navigation</FormLabel>
                     <FormGroup>
                         {
-                            ['m_46', 'm_47', 'm_48', 'm_49', 'm_50', 'm_51'].map((option_code, index) => {
+                            ['m_46', 'm_47', 'm_48', 'm_49', 'm_50', 'm_51', 'm_81'].map((option_code, index) => {
                                 return (
                                     <FormControlLabel 
                                         control={
@@ -679,7 +704,7 @@ export default function ManeuversComponent() {
                 <FormLabel sx={formLabelSxProperty} component="legend">Emergency Procedures</FormLabel>
                     <FormGroup>
                         {
-                            ['m_54', 'm_55', 'm_56', 'm_57', 'm_58', 'm_59', 'm_60', 'm_61', 'm_62', 'm_63', 'm_64', 'm_65', 'm_66', 'm_67', 'm_68', 'm_69'].map((option_code, index) => {
+                            ['m_54', 'm_55', 'm_80', 'm_56', 'm_57', 'm_58', 'm_59', 'm_60', 'm_61', 'm_62', 'm_63', 'm_64', 'm_65', 'm_66', 'm_67', 'm_68', 'm_69'].map((option_code, index) => {
                                 return (
                                     <FormControlLabel 
                                         control={
