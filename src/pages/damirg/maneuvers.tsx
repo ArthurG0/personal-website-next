@@ -8,114 +8,27 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function ManeuversComponent() {
 
-    interface OptionCodes {
-        barrel_roll: boolean,
-        roll: boolean,
-        cobra: boolean,
-        instrument_1: boolean,
-        instrument_2: boolean,
-        instrument_3: boolean,
-        instrument_4: boolean,
-        instrument_5: boolean,
-        instrument_6: boolean,
-        m_1: boolean,
-        m_2: boolean,
-        m_3: boolean,
-        m_4: boolean,
-        m_5: boolean,
-        m_6: boolean,
-        m_7: boolean,
-        m_8: boolean,
-        m_9: boolean,
-        m_10: boolean,
-        m_11: boolean,
-        m_12: boolean,
-        m_13: boolean,
-        m_14: boolean,
-        m_15: boolean,
-        m_16: boolean,
-        m_17: boolean,
-        m_18: boolean,
-        m_19: boolean,
-        m_20: boolean,
-        m_21: boolean,
-        m_22: boolean,
-        m_23: boolean,
-        m_24: boolean,
-        m_25: boolean,
-        m_26: boolean,
-        m_27: boolean,
-        m_28: boolean,
-        m_29: boolean,
-        m_30: boolean,
-        m_31: boolean,
-        m_32: boolean,
-        m_33: boolean,
-        m_34: boolean,
-        m_35: boolean,
-        m_36: boolean,
-        m_37: boolean,
-        m_38: boolean,
-        m_39: boolean,
-        m_40: boolean,
-        m_41: boolean,
-        m_42: boolean,
-        m_43: boolean,
-        m_44: boolean,
-        m_45: boolean,
-        m_46: boolean,
-        m_47: boolean,
-        m_48: boolean,
-        m_49: boolean,
-        m_50: boolean,
-        m_51: boolean,
-        m_52: boolean,
-        m_53: boolean,
-        m_54: boolean,
-        m_55: boolean,
-        m_56: boolean,
-        m_57: boolean,
-        m_58: boolean,
-        m_59: boolean,
-        m_60: boolean,
-        m_61: boolean,
-        m_62: boolean,
-        m_63: boolean,
-        m_64: boolean,
-        m_65: boolean,
-        m_66: boolean,
-        m_67: boolean,
-        m_68: boolean,
-        m_69: boolean,
-        m_70: boolean,
-        m_71: boolean,
-        m_72: boolean,
-        m_73: boolean,
-        m_74: boolean,
-        m_75: boolean,
-        m_76: boolean,
-        m_77: boolean,
-        m_78: boolean,
-        m_79: boolean,
-        m_80: boolean,
-        m_81: boolean
-    }
+    type OptionCodeKey =
+    | 'm_1'  | 'm_2'  | 'm_3'  | 'm_4'  | 'm_5'  | 'm_6'  | 'm_7'  | 'm_8'  | 'm_9'  | 'm_10'
+    | 'm_11' | 'm_12' | 'm_13' | 'm_14' | 'm_15' | 'm_16' | 'm_17' | 'm_18' | 'm_19' | 'm_20'
+    | 'm_21' | 'm_22' | 'm_23' | 'm_24' | 'm_25' | 'm_26' | 'm_27' | 'm_28' | 'm_29' | 'm_30'
+    | 'm_31' | 'm_32' | 'm_33' | 'm_34' | 'm_35' | 'm_36' | 'm_37' | 'm_38' | 'm_39' | 'm_40'
+    | 'm_41' | 'm_42' | 'm_43' | 'm_44' | 'm_45' | 'm_46' | 'm_47' | 'm_48' | 'm_49' | 'm_50'
+    | 'm_51' | 'm_52' | 'm_53' | 'm_54' | 'm_55' | 'm_56' | 'm_57' | 'm_58' | 'm_59' | 'm_60'
+    | 'm_61' | 'm_62' | 'm_63' | 'm_64' | 'm_65' | 'm_66' | 'm_67' | 'm_68' | 'm_69' | 'm_70'
+    | 'm_71' | 'm_72' | 'm_73' | 'm_74' | 'm_75' | 'm_76' | 'm_77' | 'm_78' | 'm_79' | 'm_80'
+    | 'm_81' ;
+
+    type OptionCodes = Record<OptionCodeKey, boolean>;
+
 
     const [selectedTab, setSelectedTab] = useState(0)
     const [isMobile, setIsMobile] = useState(true);
     const [isPhoneSize, setIsPhoneSize] = useState(false);
     const [screenWidth, setScreenWidth] = useState(768);
     const [finalText, setFinalText] = useState("Here are my maneuvers: A, B, C")
-    const [selectedRadios, setSelectedRadios] = useState<OptionCodes>({
-        barrel_roll: false,
-        roll: false,
-        cobra: false,
-        instrument_1: false,
-        instrument_2: false,
-        instrument_3: false,
-        instrument_4: false,
-        instrument_5: false,
-        instrument_6: false,
+    const [selectedRadiosList, setSelectedRadiosList] = useState<string[]>([])
+    const [radioValues, setRadioValues] = useState<Record<OptionCodeKey, boolean>>({
 
         // Ground
         m_1: false,
@@ -211,6 +124,7 @@ export default function ManeuversComponent() {
         m_78: false,
         m_79: false,
     })
+
 
     useEffect(() => {
         // Function to check if the device is mobile
@@ -344,19 +258,6 @@ export default function ManeuversComponent() {
         // Navigation Last
         'm_81': 'Lost Procedures',
 
-
-
-
-
-
-
-        'instrument_1': 'Instrument Maneuver 1',
-        'instrument_2': 'Maneuver 2',
-        'instrument_3': 'Instrument Maneuver 3',
-        'instrument_4': 'Instrument Maneuver 4',
-        'instrument_5': 'Maneuver 5',
-        'instrument_6': 'Instrument Maneuver 6',
-
     }
 
     useEffect(() => {
@@ -364,16 +265,14 @@ export default function ManeuversComponent() {
         setFinalText(() => {
             
             const selectedManeuvers: string[] = []
-            for (const [key,value] of Object.entries(selectedRadios)) {
-                if (value) selectedManeuvers.push(radioIdToReadableManeuver[key])
-            }
-
+            selectedRadiosList.forEach(element => selectedManeuvers.push(radioIdToReadableManeuver[element]))
+            
             if (selectedManeuvers.length === 0) return "Select maneuvers to continue."
             else return `${selectedManeuvers.join(', ')}`
 
         })
 
-    }, [selectedRadios])
+    }, [selectedRadiosList])
 
 
     function handleChange(event: SyntheticEvent, newTabIndex: number) : void {
@@ -381,11 +280,23 @@ export default function ManeuversComponent() {
     }
 
     function handleCheckboxChange(event: React.ChangeEvent<HTMLInputElement>) {
-        setSelectedRadios({
-            ...selectedRadios,
+        setRadioValues({
+            ...radioValues,
             [event.target.name]: event.target.checked
         });
+
+        setSelectedRadiosList(existingList => {
+            const alreadyPresent = existingList.includes(event.target.name)
+            if (event.target.checked && !alreadyPresent) {
+                return [...existingList, event.target.name]
+            }
+            if (!event.target.checked && alreadyPresent) {
+                return existingList.filter(el => el != event.target.name)
+            }
+            return existingList;
+        })
     };
+
 
     function copyText() {
         const copyText = document.getElementById("copyBox") as HTMLInputElement;
@@ -526,7 +437,7 @@ export default function ManeuversComponent() {
                                     <FormControlLabel 
                                         control={
                                             <Checkbox 
-                                                checked={selectedRadios[option_code as keyof OptionCodes]}
+                                                checked={radioValues[option_code as keyof OptionCodes]}
                                                 onChange={handleCheckboxChange}
                                                 name={option_code} 
                                             />
@@ -548,7 +459,7 @@ export default function ManeuversComponent() {
                                 return (
                                     <FormControlLabel 
                                         control={
-                                            <Checkbox checked={selectedRadios[option_code as keyof OptionCodes]} onChange={handleCheckboxChange} name={option_code} />
+                                            <Checkbox checked={radioValues[option_code as keyof OptionCodes]} onChange={handleCheckboxChange} name={option_code} />
                                         }
                                         label={radioIdToReadableManeuver[option_code]}
                                         sx={formControlLabelSxProperty}
@@ -568,7 +479,7 @@ export default function ManeuversComponent() {
                                 return (
                                     <FormControlLabel 
                                         control={
-                                            <Checkbox checked={selectedRadios[option_code as keyof OptionCodes]} onChange={handleCheckboxChange} name={option_code} />
+                                            <Checkbox checked={radioValues[option_code as keyof OptionCodes]} onChange={handleCheckboxChange} name={option_code} />
                                         }
                                         label={radioIdToReadableManeuver[option_code]}
                                         sx={formControlLabelSxProperty}
@@ -588,7 +499,7 @@ export default function ManeuversComponent() {
                                 return (
                                     <FormControlLabel 
                                         control={
-                                            <Checkbox checked={selectedRadios[option_code as keyof OptionCodes]} onChange={handleCheckboxChange} name={option_code} />
+                                            <Checkbox checked={radioValues[option_code as keyof OptionCodes]} onChange={handleCheckboxChange} name={option_code} />
                                         }
                                         label={radioIdToReadableManeuver[option_code]}
                                         sx={formControlLabelSxProperty}
@@ -608,7 +519,7 @@ export default function ManeuversComponent() {
                                 return (
                                     <FormControlLabel 
                                         control={
-                                            <Checkbox checked={selectedRadios[option_code as keyof OptionCodes]} onChange={handleCheckboxChange} name={option_code} />
+                                            <Checkbox checked={radioValues[option_code as keyof OptionCodes]} onChange={handleCheckboxChange} name={option_code} />
                                         }
                                         label={radioIdToReadableManeuver[option_code]}
                                         sx={formControlLabelSxProperty}
@@ -628,7 +539,7 @@ export default function ManeuversComponent() {
                                 return (
                                     <FormControlLabel 
                                         control={
-                                            <Checkbox checked={selectedRadios[option_code as keyof OptionCodes]} onChange={handleCheckboxChange} name={option_code} />
+                                            <Checkbox checked={radioValues[option_code as keyof OptionCodes]} onChange={handleCheckboxChange} name={option_code} />
                                         }
                                         label={radioIdToReadableManeuver[option_code]}
                                         sx={formControlLabelSxProperty}
@@ -648,7 +559,7 @@ export default function ManeuversComponent() {
                                 return (
                                     <FormControlLabel 
                                         control={
-                                            <Checkbox checked={selectedRadios[option_code as keyof OptionCodes]} onChange={handleCheckboxChange} name={option_code} />
+                                            <Checkbox checked={radioValues[option_code as keyof OptionCodes]} onChange={handleCheckboxChange} name={option_code} />
                                         }
                                         label={radioIdToReadableManeuver[option_code]}
                                         sx={formControlLabelSxProperty}
@@ -668,7 +579,7 @@ export default function ManeuversComponent() {
                                 return (
                                     <FormControlLabel 
                                         control={
-                                            <Checkbox checked={selectedRadios[option_code as keyof OptionCodes]} onChange={handleCheckboxChange} name={option_code} />
+                                            <Checkbox checked={radioValues[option_code as keyof OptionCodes]} onChange={handleCheckboxChange} name={option_code} />
                                         }
                                         label={radioIdToReadableManeuver[option_code]}
                                         sx={formControlLabelSxProperty}
@@ -688,7 +599,7 @@ export default function ManeuversComponent() {
                                 return (
                                     <FormControlLabel 
                                         control={
-                                            <Checkbox checked={selectedRadios[option_code as keyof OptionCodes]} onChange={handleCheckboxChange} name={option_code} />
+                                            <Checkbox checked={radioValues[option_code as keyof OptionCodes]} onChange={handleCheckboxChange} name={option_code} />
                                         }
                                         label={radioIdToReadableManeuver[option_code]}
                                         sx={formControlLabelSxProperty}
@@ -708,7 +619,7 @@ export default function ManeuversComponent() {
                                 return (
                                     <FormControlLabel 
                                         control={
-                                            <Checkbox checked={selectedRadios[option_code as keyof OptionCodes]} onChange={handleCheckboxChange} name={option_code} />
+                                            <Checkbox checked={radioValues[option_code as keyof OptionCodes]} onChange={handleCheckboxChange} name={option_code} />
                                         }
                                         label={radioIdToReadableManeuver[option_code]}
                                         sx={formControlLabelSxProperty}
@@ -735,7 +646,7 @@ export default function ManeuversComponent() {
                                     return (
                                         <FormControlLabel 
                                             control={
-                                                <Checkbox checked={selectedRadios[option_code as keyof OptionCodes]} onChange={handleCheckboxChange} name={option_code} />
+                                                <Checkbox checked={radioValues[option_code as keyof OptionCodes]} onChange={handleCheckboxChange} name={option_code} />
                                             }
                                             label={radioIdToReadableManeuver[option_code]}
                                             sx={formControlLabelSxProperty}
@@ -755,7 +666,7 @@ export default function ManeuversComponent() {
                                     return (
                                         <FormControlLabel 
                                             control={
-                                                <Checkbox checked={selectedRadios[option_code as keyof OptionCodes]} onChange={handleCheckboxChange} name={option_code} />
+                                                <Checkbox checked={radioValues[option_code as keyof OptionCodes]} onChange={handleCheckboxChange} name={option_code} />
                                             }
                                             label={radioIdToReadableManeuver[option_code]}
                                             sx={formControlLabelSxProperty}
