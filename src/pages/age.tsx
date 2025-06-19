@@ -50,13 +50,11 @@ export default function AgeComponent() {
         
         const currentDate = new Date()
         
-        console.log(birth_date)
-        
         // compute difference between current date and birth date
         const difference = currentDate.getTime() - birth_date.getTime()
         
         // convert difference to years
-        const years = difference / (1000 * 60 * 60 * 24 * 365)
+        const years = difference / (1000 * 60 * 60 * 24 * 365.25)
         
         const fullYears = Math.floor(years).toString()
         const decimalYears = (years - Math.floor(years)).toString().substring(1,DECIMAL_POINTS)
@@ -66,7 +64,7 @@ export default function AgeComponent() {
         setDecimalAge(decimalYears)
         
         // print out the full age and decimal age
-        console.log(fullYears, decimalYears)
+        if (DEBUG_ON) console.log(fullYears, decimalYears)
 
 
         let timerEnd = performance.now()
